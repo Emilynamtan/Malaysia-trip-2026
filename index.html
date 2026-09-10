@@ -8,8 +8,8 @@ HTML
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   :root {
-    --primary-color: #0d3b2e; /* 经典南洋墨绿 */
-    --accent-color: #c5a059;  /* 奢华哑光金 */
+    --primary-color: #0d3b2e; /* 南洋墨绿 */
+    --accent-color: #c5a059;  /* 哑光高定金 */
     --bg-color: #f7f5f0;      /* 复古暖米白 */
     --card-bg: #ffffff;
     --text-main: #2b2b2b;
@@ -36,153 +36,224 @@ HTML
   
   .container { max-width: 680px; margin: 0 auto; padding: 20px 16px; }
 
-  /* Header Header */
-  header { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #0d3b2e 0%, #175241 100%); color: #fff; border-radius: 16px; margin-bottom: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
-  header::after { content: "🇲🇾"; position: absolute; right: -10px; bottom: -10px; font-size: 80px; opacity: 0.15; }
-  header h1 { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); letter-spacing: 1px; margin-bottom: 8px; }
-  header p { font-size: 0.85rem; opacity: 0.9; font-weight: 300; }
+  header { text-align: center; padding: 28px 20px; background: linear-gradient(135deg, #0d3b2e 0%, #175241 100%); color: #fff; border-radius: 16px; margin-bottom: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  header h1 { font-size: 1.4rem; font-weight: 700; color: var(--accent-color); letter-spacing: 1px; margin-bottom: 6px; }
+  header p { font-size: 0.85rem; opacity: 0.9; }
 
-  /* Map Container */
-  .section-title { font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin: 24px 0 12px 0; display: flex; align-items: center; gap: 8px; }
+  .section-title { font-size: 1.05rem; font-weight: 600; color: var(--primary-color); margin: 24px 0 12px 0; display: flex; align-items: center; gap: 8px; }
   @media (prefers-color-scheme: dark) { .section-title { color: var(--accent-color); } }
-  #map { height: 260px; width: 100%; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 24px; z-index: 1; }
-
-  /* Card Component */
-  .card { background: var(--card-bg); border-radius: 14px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow); transition: transform 0.2s; }
   
-  /* Flight Component */
-  .flight-box { display: flex; justify-content: space-between; align-items: center; background: rgba(197, 160, 89, 0.08); padding: 12px 16px; border-radius: 10px; margin-top: 8px; }
-  .flight-loc { font-weight: bold; font-size: 1rem; }
-  .flight-arrow { color: var(--accent-color); font-size: 0.8rem; }
+  #map { height: 320px; width: 100%; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 24px; z-index: 1; }
 
-  /* Hotel Specifics */
-  .hotel-meta { margin-top: 10px; padding-top: 10px; border-top: 1px stroke var(--border-color); font-size: 0.85rem; color: var(--text-muted); }
-  .map-btn { display: inline-flex; align-items: center; gap: 6px; background-color: var(--primary-color); color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; margin-top: 10px; font-weight: 500; }
+  .card { background: var(--card-bg); border-radius: 14px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow); }
+  
+  /* 路线/交通卡片 */
+  .meta-box { background: rgba(197, 160, 89, 0.08); padding: 10px 14px; border-radius: 8px; margin-top: 10px; font-size: 0.85rem; }
+  .map-btn { display: inline-flex; align-items: center; gap: 4px; background-color: var(--primary-color); color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 6px; font-size: 0.75rem; margin-top: 8px; font-weight: 500; }
 
-  /* Interactive Todo List */
+  /* 可勾选清单 */
   .todo-list { list-style: none; }
-  .todo-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dotted var(--border-color); }
+  .todo-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dotted var(--border-color); font-size: 0.9rem; }
   .todo-item:last-child { border-bottom: none; }
   .todo-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary-color); cursor: pointer; }
   .todo-item input[type="checkbox"]:checked + span { text-decoration: line-through; opacity: 0.5; }
 
-  /* Timeline */
-  .timeline-item { position: relative; padding-left: 24px; margin-bottom: 16px; border-left: 2px solid var(--accent-color); }
-  .timeline-item::before { content: ""; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-color); }
-  .day-badge { background: var(--primary-color); color: #fff; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600; display: inline-block; margin-bottom: 4px; }
-  
-  .tag { display: inline-block; background: rgba(13, 59, 46, 0.08); color: var(--primary-color); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 4px; }
+  /* 可折叠行程表 */
+  details { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; padding: 12px 16px; box-shadow: var(--shadow); }
+  details[open] { border-color: var(--accent-color); }
+  summary { font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "➕"; font-size: 0.8rem; color: var(--accent-color); }
+  details[open] summary::after { content: "➖"; }
+  .day-content { margin-top: 12px; padding-top: 12px; border-top: 1px stroke var(--border-color); font-size: 0.88rem; color: var(--text-muted); }
+  .day-tag { background: var(--primary-color); color: #fff; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-right: 6px; }
 </style>
 </head>
 <body>
 
 <div class="container">
   <header>
-    <h1>马来西亚奢享与探索之旅</h1>
+    <h1>🇲🇾 马来西亚奢享之旅</h1>
     <p>📅 2026.09.12 - 2026.09.22 (11天10晚)</p>
   </header>
 
-  <!-- 地图路线 -->
-  <div class="section-title">🗺️ 路线规划地图</div>
+  <!-- 1. 全局路线地图 -->
+  <div class="section-title">🗺️ 全局行程路线图</div>
   <div id="map"></div>
 
-  <!-- 待办事项 -->
-  <div class="section-title">☑️ 出发前待办清单</div>
+  <!-- 2. 出发清单 -->
+  <div class="section-title">☑️ 出发前准备清单</div>
   <div class="card">
     <ul class="todo-list">
-      <li class="todo-item"><input type="checkbox"><span>填写入境卡 MDAC (入境前3天内)</span></li>
+      <li class="todo-item"><input type="checkbox"><span>填写入境卡 MDAC (入境前3天内申请)</span></li>
       <li class="todo-item"><input type="checkbox"><span>准备护照 (有效期6个月以上)</span></li>
-      <li class="todo-item"><input type="checkbox"><span>开通国际漫游或购买马来西亚 e-SIM 卡</span></li>
-      <li class="todo-item"><input type="checkbox"><span>预先下载 Grab (东南亚打车/外卖必备)</span></li>
-      <li class="todo-item"><input type="checkbox"><span>准备少量马币现金 (旅游税/小费备用)</span></li>
+      <li class="todo-item"><input type="checkbox"><span>开通手机国际漫游 / 购买 e-SIM 卡</span></li>
+      <li class="todo-item"><input type="checkbox"><span>预先下载 Grab 打车软件</span></li>
+      <li class="todo-item"><input type="checkbox"><span>兑换少量马币现金 (付押金/小费备用)</span></li>
     </ul>
   </div>
 
-  <!-- 核心航班 -->
-  <div class="section-title">✈️ 航班大交通</div>
-  <div class="card">
-    <div class="flight-box">
-      <div><div class="flight-loc">成都天府 T1</div><div style="font-size:0.75rem;">09-12 00:05</div></div>
-      <div class="flight-arrow">✈️ 直飞 4h35m</div>
-      <div><div class="flight-loc">吉隆坡 T1</div><div style="font-size:0.75rem;">09-12 04:40</div></div>
-    </div>
-    <div class="flight-box" style="margin-top:10px;">
-      <div><div class="flight-loc">吉隆坡 T1</div><div style="font-size:0.75rem;">09-22 18:00</div></div>
-      <div class="flight-arrow">✈️ 直飞 4h40m</div>
-      <div><div class="flight-loc">成都天府 T1</div><div style="font-size:0.75rem;">09-22 22:40</div></div>
-    </div>
-  </div>
+  <!-- 3. 时间线：机票/酒店/包车安排 -->
+  <div class="section-title">🗓️ 大交通与酒店预订明细 (按时间排序)</div>
 
-  <!-- 住宿精选 -->
-  <div class="section-title">🏨 住宿预订与备注</div>
-  
   <div class="card">
-    <strong>📍 槟城 (Penang)</strong>
-    <p style="font-size:0.9rem; margin-top:4px;">槟城古迹精品酒店 (示例)</p>
-    <div class="hotel-meta">
-      <div>💰 <strong>预估税费：</strong> 旅游税 MYR 10/晚/房 (现场支付)</div>
-      <div>💵 <strong>押金需求：</strong> MYR 200 (刷卡/现金)</div>
-      <a href="https://maps.google.com/?q=Penang" target="_blank" class="map-btn">📍 在 Google Maps 中打开</a>
-    </div>
+    <strong>✈️ 09-12 去程航班</strong>
+    <p style="font-size:0.85rem; color:var(--text-muted);">成都天府 T1 (00:05) -> 吉隆坡 T1 (04:40)</p>
   </div>
 
   <div class="card">
-    <strong>📍 怡保 (Ipoh)</strong>
-    <p style="font-size:0.9rem; margin-top:4px;">怡保温泉度假酒店 (示例)</p>
-    <div class="hotel-meta">
-      <div>💰 <strong>预估税费：</strong> 旅游税 MYR 10/晚/房</div>
-      <div>💵 <strong>押金需求：</strong> MYR 100</div>
-      <a href="https://maps.google.com/?q=Ipoh" target="_blank" class="map-btn">📍 在 Google Maps 中打开</a>
-    </div>
+    <strong>🚗 09-12 包车接机及跨城</strong>
+    <p style="font-size:0.85rem; color:var(--text-muted);">吉隆坡机场 (KLIA) 接机直达槟城酒店</p>
+    <div class="meta-box">📌 备注：路程约 4 小时，请提醒司机中途在服务区休息。</div>
   </div>
 
-  <!-- 每日行程 -->
-  <div class="section-title">🗓️ 详细行程安排</div>
-  
   <div class="card">
-    <div class="timeline-item">
-      <span class="day-badge">DAY 1 - 09.12</span>
-      <p>✈️ <strong>抵达吉隆坡 -> 专车前往槟城</strong></p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">🚗 包车接机前往槟城 | 🍧 晚餐品尝乔治市夜市龙虾面/煎𦵃</p>
+    <strong>🏨 09-12 至 09-14 槟城住宿 (2晚)</strong>
+    <p style="font-size:0.85rem; font-weight:600; margin-top:4px;">槟城乔治市精品酒店 (Penang Hotel)</p>
+    <div class="meta-box">
+      💰 <strong>税费：</strong> 旅游税 MYR 10/晚 + 地方税 MYR 3/晚<br>
+      💵 <strong>押金：</strong> MYR 200 (支持现金/信用卡)
     </div>
-
-    <div class="timeline-item">
-      <span class="day-badge">DAY 2 - 09.13</span>
-      <p>📍 <strong>槟城南洋风情一日游</strong></p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">📍 游览壁画街、张弼士故居(蓝屋) | 🍧 午餐煎𦵃、炒粿条</p>
-    </div>
-
-    <div class="timeline-item">
-      <span class="day-badge">DAY 3 - 09.14</span>
-      <p>🚗 <strong>槟城 -> 怡保 (包车移防)</strong></p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">📍 途经极乐寺 | 🍧 怡保芽菜鸡、白咖啡晚餐</p>
-    </div>
-    
-    <div class="timeline-item">
-      <span class="day-badge">DAY 11 - 09.22</span>
-      <p>✈️ <strong>吉隆坡 -> 成都 (返程)</strong></p>
-      <p style="font-size:0.85rem; color:var(--text-muted);">🛍️ 机场免税店购物 | ✈️ 18:00 飞往成都</p>
-    </div>
+    <a href="https://maps.google.com/?q=Penang" target="_blank" class="map-btn">📍 Google Maps 导航</a>
   </div>
+
+  <div class="card">
+    <strong>🚗 09-14 包车转移</strong>
+    <p style="font-size:0.85rem; color:var(--text-muted);">槟城酒店退房 -> 包车前往怡保</p>
+  </div>
+
+  <div class="card">
+    <strong>🏨 09-14 至 09-16 怡保住宿 (2晚)</strong>
+    <p style="font-size:0.85rem; font-weight:600; margin-top:4px;">怡保温泉度假酒店 (Ipoh Resort)</p>
+    <div class="meta-box">
+      💰 <strong>税费：</strong> 旅游税 MYR 10/晚<br>
+      💵 <strong>押金：</strong> MYR 100
+    </div>
+    <a href="https://maps.google.com/?q=Ipoh" target="_blank" class="map-btn">📍 Google Maps 导航</a>
+  </div>
+
+  <div class="card">
+    <strong>🚗 09-16 包车跨城 (前往登嘉楼)</strong>
+    <p style="font-size:0.85rem; color:var(--text-muted);">怡保出发包车横穿东西大道前往登嘉楼码头</p>
+  </div>
+
+  <div class="card">
+    <strong>🏨 🚤 09-16 至 09-20 热浪岛度假村 (4晚)</strong>
+    <p style="font-size:0.85rem; font-weight:600; margin-top:4px;">热浪岛沙滩度假村 (Redang Island Resort)</p>
+    <div class="meta-box">
+      🛥️ <strong>船票备注：</strong> 墨浪码头 (Merang Jetty) 乘船上岛<br>
+      💰 <strong>税费：</strong> 海洋公园环境保护费 MYR 30/人 + 旅游税
+    </div>
+    <a href="https://maps.google.com/?q=Redang+Island" target="_blank" class="map-btn">📍 Google Maps 导航 (墨浪码头)</a>
+  </div>
+
+  <div class="card">
+    <strong>🏨 09-20 至 09-22 吉隆坡住宿 (2晚)</strong>
+    <p style="font-size:0.85rem; font-weight:600; margin-top:4px;">吉隆坡市中心酒店 (Kuala Lumpur Hotel)</p>
+    <div class="meta-box">
+      💰 <strong>税费：</strong> 旅游税 MYR 10/晚<br>
+      💵 <strong>押金：</strong> MYR 200
+    </div>
+    <a href="https://maps.google.com/?q=Kuala+Lumpur" target="_blank" class="map-btn">📍 Google Maps 导航</a>
+  </div>
+
+  <div class="card">
+    <strong>✈️ 09-22 返程航班</strong>
+    <p style="font-size:0.85rem; color:var(--text-muted);">吉隆坡 T1 (18:00) -> 成都天府 T1 (22:40)</p>
+  </div>
+
+  <!-- 4. 可折叠详细每日行程 -->
+  <div class="section-title">📍 详细每日行程 (点击展开/折叠)</div>
+
+  <details open>
+    <summary><div><span class="day-tag">09.12 Day 1</span> 抵达与前往槟城</div></summary>
+    <div class="day-content">
+      ✈️ 04:40 抵达吉隆坡机场，包车接机直接开往槟城。<br>
+      🏨 下午入住槟城酒店休息。<br>
+      🍧 傍晚逛乔治市夜市，品尝龙虾面与煎𦵃。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.13 Day 2</span> 槟城南洋风情一日游</div></summary>
+    <div class="day-content">
+      📍 游览乔治市壁画街、姓氏桥、张弼士故居(蓝屋)。<br>
+      🍧 午餐品尝炒粿条、福建面；下午在南洋复古咖啡馆下午茶。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.14 Day 3</span> 槟城 -> 怡保</div></summary>
+    <div class="day-content">
+      🚗 包车前往怡保，途径极乐寺参观。<br>
+      🍧 入住怡保酒店后，晚上品尝著名的怡保芽菜鸡与白咖啡。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.15 Day 4</span> 怡保山城与洞穴探索</div></summary>
+    <div class="day-content">
+      📍 游览霹雳洞、极乐洞，打卡怡保老街区与二奶巷。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.16 Day 5</span> 怡保 -> 登嘉楼 -> 热浪岛</div></summary>
+    <div class="day-content">
+      🚗 包车前往登嘉楼墨浪码头(Merang Jetty)。<br>
+      🚤 乘坐渡轮前往热浪岛，入住海岛度假村。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.17-19 Day 6-8</span> 热浪岛度假与潜水</div></summary>
+    <div class="day-content">
+      🏊‍♂️ 出海出潜、浮潜看海龟、体验白沙滩与无边泳池，享受海岛慢生活。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.20 Day 9</span> 热浪岛 -> 登嘉楼 -> 吉隆坡</div></summary>
+    <div class="day-content">
+      🚤 乘船返回登嘉楼，转乘交通前往吉隆坡。<br>
+      🏨 入住吉隆坡市中心酒店，夜观双子塔 night view。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.21 Day 10</span> 吉隆坡都市打卡与购物</div></summary>
+    <div class="day-content">
+      📍 游览独立广场、黑风洞、武吉免登(Bukit Bintang)商圈购物。
+    </div>
+  </details>
+
+  <details>
+    <summary><div><span class="day-tag">09.22 Day 11</span> 机场购物与返程</div></summary>
+    <div class="day-content">
+      🛍️ 前往吉隆坡机场 T1 免税店购物。<br>
+      ✈️ 18:00 乘坐航班返回成都天府，结束愉快旅程。
+    </div>
+  </details>
 
 </div>
 
-<!-- 地图脚本 -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-  // 初始化地图 (聚焦马来西亚西马)
-  var map = L.map('map').setView([4.2105, 101.9758], 6);
+  // 地图初始化
+  var map = L.map('map').setView([4.5, 102.0], 6);
 
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     maxZoom: 18,
     attribution: '© OpenStreetMap'
   }).addTo(map);
 
-  // 标记坐标
+  // 5 个地点坐标及中文日期标注
   var points = [
-    { name: "吉隆坡 ✈️", lat: 2.7456, lng: 101.7072 },
-    { name: "怡保 📍", lat: 4.5975, lng: 101.0901 },
-    { name: "槟城 📍", lat: 5.4164, lng: 100.3327 }
+    { name: "1. 吉隆坡 (09.12 / 09.20-22)", lat: 2.7456, lng: 101.7072 },
+    { name: "2. 槟城 (09.12 - 09.14)", lat: 5.4164, lng: 100.3327 },
+    { name: "3. 怡保 (09.14 - 09.16)", lat: 4.5975, lng: 101.0901 },
+    { name: "4. 登嘉楼 (09.16 途径/中转)", lat: 5.3117, lng: 103.1324 },
+    { name: "5. 热浪岛 (09.16 - 09.20)", lat: 5.7688, lng: 103.0069 }
   ];
 
   var latlngs = [];
@@ -192,7 +263,7 @@ HTML
     latlngs.push([pt.lat, pt.lng]);
   });
 
-  // 连线
+  // 画出连接路线
   var polyline = L.polyline(latlngs, {color: '#c5a059', weight: 3, opacity: 0.8, dashArray: '6, 6'}).addTo(map);
 </script>
 

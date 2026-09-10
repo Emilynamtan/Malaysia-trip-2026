@@ -138,23 +138,23 @@
   }
   .card + .card{margin-top:14px}
 
-  /* 预订卡：浅暖黄灰（更浅、可读性优先，无流光白雾） */
+  /* 预订卡：低饱和暖草灰黄（C2 定稿色） */
   .bk-grid .card{
     background:linear-gradient(150deg,
-      rgba(249,247,240,.94) 0%,
-      rgba(244,241,229,.91) 50%,
-      rgba(238,233,217,.88) 100%);
-    border:1px solid rgba(158,146,110,.28);
-    box-shadow:0 12px 30px rgba(96,88,60,.09),
-      inset 0 1.5px 1px rgba(255,255,255,.9),
-      inset 0 -8px 18px rgba(214,206,176,.14);
+      rgba(243,241,231,.95) 0%,
+      rgba(236,232,216,.92) 50%,
+      rgba(227,222,202,.90) 100%);
+    border:1px solid rgba(148,136,98,.30);
+    box-shadow:0 14px 36px rgba(96,88,60,.11),
+      inset 0 1.5px 1px rgba(255,255,255,.85),
+      inset 0 -10px 22px rgba(202,194,160,.18);
   }
   .bk-grid .card::after{display:none}
   @media (prefers-color-scheme: dark){
     .bk-grid .card{
-      background:linear-gradient(150deg, rgba(54,51,41,.88) 0%, rgba(47,44,36,.85) 50%, rgba(41,39,32,.83) 100%);
-      border-color:rgba(180,168,126,.24);
-      box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 1.5px 1px rgba(255,255,255,.18);
+      background:linear-gradient(150deg, rgba(50,48,38,.90) 0%, rgba(43,41,33,.87) 50%, rgba(37,36,29,.85) 100%);
+      border-color:rgba(170,158,116,.26);
+      box-shadow:0 14px 36px rgba(0,0,0,.5), inset 0 1.5px 1px rgba(255,255,255,.16);
     }
   }
 
@@ -320,36 +320,9 @@
   .tips .card b.tt{font-family:var(--serif);color:var(--accent);letter-spacing:1px}
   footer{margin-top:52px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px;padding:0 20px}
   footer::before{content:"❦";display:block;color:var(--gold);font-size:14px;margin-bottom:8px}
-  @media (max-width:433px){
-    .wrap{padding:0 12px}
-    body{overflow-x:hidden}
-    .card{padding:15px 15px}
-    .bk{padding:15px}
-    .bk h3{font-size:14.5px;letter-spacing:0}
-    .bk h3 .tag{font-size:10px;padding:2px 9px;letter-spacing:.5px}
-    .bk .row{font-size:13px;line-height:1.6;margin-top:4px}
-    .bk .row .k{margin-right:6px}
-    .bk .acts{margin-top:9px;gap:7px}
-    .bk .acts a{padding:3px 12px;font-size:11.5px}
-    .day > .head{padding:14px 14px 10px;gap:7px}
-    .day .date{font-size:15px}
-    .day .ttl{font-size:14.5px}
-    .day ol{padding:0 14px 6px}
-    .day ol li{gap:10px;padding:8px 0}
-    .day .t{flex-basis:52px;font-size:12.5px}
-    .day .c{font-size:13.5px}
-    .day .c small{font-size:12px}
-    .day .badge{display:inline-block !important;white-space:nowrap;vertical-align:2px;line-height:1.5;padding:1px 9px}
-    .day .badge{display:inline-block !important;white-space:nowrap;vertical-align:2px;line-height:1.5;padding:1px 9px}
-    details.daymap{padding:8px 14px 13px}
-    .tips .card{padding:13px 15px;font-size:13.5px}
-    .plain li{font-size:13.5px;padding:10px 3px 10px 38px}
-    #now .card{padding:20px 14px}
-    .count .cell{min-width:56px}
-    .count .num{font-size:32px}
-    .count .sep{font-size:20px;padding-bottom:14px}
-    #now .evt-title{font-size:17px}
-  }
+  /* 防横向溢出：地图/装饰 SVG 几何越界不应产生左右滑动 */
+  html,body{overflow-x:hidden}
+  #map .card{overflow:hidden}
   @media (max-width:520px){
     .hero-in{padding:26px 22px 24px}
     .hero h1{font-size:32px;letter-spacing:4px}

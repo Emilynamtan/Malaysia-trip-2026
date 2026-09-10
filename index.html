@@ -7,27 +7,33 @@
 <title>马来西亚疯狂季 · 四人小分队</title>
 <style>
   :root{
-    --bg:#f2eee3; --paper:#fcfaf3; --ink:#20302a; --muted:#7f8781; --line:#e2dcc9;
+    --bg:#e2eae2; --paper:#f7faf5; --ink:#1d2f28; --muted:#6f8177; --line:#d0ddd2;
     --accent:#14523c; --accent-soft:#e4ede6; --gold:#a98a52; --warn:#b05c2d; --ok:#2e7d5f;
     --c1:#b65c3f; --c2:#b8933f; --c3:#4c6ea6; --c4:#33796b; --c5:#7d5f9e;
-    --map-sea:#e9efe8; --map-land:#f4efdf; --map-ink:#6e7a6f;
+    --map-sea:#dbe7de; --map-land:#f0f4ea; --map-ink:#64756a;
     --serif:"Noto Serif SC","Songti SC","STSongti-SC","SimSun",Georgia,"Times New Roman",serif;
     --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
     --shadow:0 10px 30px rgba(23,58,45,.08), 0 2px 6px rgba(23,58,45,.05);
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#0e1613; --paper:#16211c; --ink:#e9e5d6; --muted:#8f9a92; --line:#28382f;
+      --bg:#0b1410; --paper:#152019; --ink:#e9e5d6; --muted:#8f9a92; --line:#243328;
       --accent:#7fb99b; --accent-soft:#1c2f27; --gold:#c8ab72; --warn:#d9995f; --ok:#6cbf9c;
       --c1:#d98d6f; --c2:#d3b264; --c3:#8aa5d4; --c4:#6cbfae; --c5:#b295d6;
       --map-sea:#14201b; --map-land:#1d2c25; --map-ink:#83928a;
       --shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    body{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='76' viewBox='0 0 76 76'%3E%3Cg fill='none' stroke='%237fb99b' stroke-width='1' opacity='0.05'%3E%3Crect x='6' y='6' width='64' height='64' rx='8'/%3E%3Cpath d='M38 20 q10 10 0 20 q-10 -10 0 -20 Z'/%3E%3Cpath d='M38 56 q-10 -10 0 -20 q10 10 0 20 Z'/%3E%3Cpath d='M20 38 q10 -10 20 0 q-10 10 -20 0 Z'/%3E%3Cpath d='M56 38 q-10 10 -20 0 q10 -10 20 0 Z'/%3E%3Ccircle cx='38' cy='38' r='4.5'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='66' cy='10' r='2'/%3E%3Ccircle cx='10' cy='66' r='2'/%3E%3Ccircle cx='66' cy='66' r='2'/%3E%3C/g%3E%3C/svg%3E");
+      background-size:76px 76px;
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='76' viewBox='0 0 76 76'%3E%3Cg fill='none' stroke='%2314523c' stroke-width='1' opacity='0.055'%3E%3Crect x='6' y='6' width='64' height='64' rx='8'/%3E%3Cpath d='M38 20 q10 10 0 20 q-10 -10 0 -20 Z'/%3E%3Cpath d='M38 56 q-10 -10 0 -20 q10 10 0 20 Z'/%3E%3Cpath d='M20 38 q10 -10 20 0 q-10 10 -20 0 Z'/%3E%3Cpath d='M56 38 q-10 10 -20 0 q10 -10 20 0 Z'/%3E%3Ccircle cx='38' cy='38' r='4.5'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='66' cy='10' r='2'/%3E%3Ccircle cx='10' cy='66' r='2'/%3E%3Ccircle cx='66' cy='66' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    background-size:76px 76px;
     color:var(--ink);
     font-family:var(--sans);
     line-height:1.7; font-size:15px;

@@ -2,888 +2,198 @@ HTML
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>马来西亚11日四人畅游手册 (9.12 - 9.24)</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>马来西亚11日深度奢享之旅 (9.12 - 9.22)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --primary-color: #0d3b2e; /* 经典南洋墨绿 */
+    --accent-color: #c5a059;  /* 奢华哑光金 */
+    --bg-color: #f7f5f0;      /* 复古暖米白 */
+    --card-bg: #ffffff;
+    --text-main: #2b2b2b;
+    --text-muted: #666666;
+    --border-color: #e5dfd3;
+    --shadow: 0 8px 24px rgba(13, 59, 46, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
     :root {
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-main: #212529;
-      --text-muted: #6c757d;
-      --border-color: #e9ecef;
-      --primary-color: #0d6efd;
-      --accent-color: #fd7e14;
-      --tag-bg: #e7f1ff;
-      --tag-text: #0d6efd;
-      --timeline-line: #dee2e6;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --primary-color: #1a4d3e;
+      --accent-color: #d4af37;
+      --bg-color: #121816;
+      --card-bg: #1e2623;
+      --text-main: #e8e6e1;
+      --text-muted: #9a9e9b;
+      --border-color: #2c3833;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
+  }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg-color: #121212;
-        --card-bg: #1e1e1e;
-        --text-main: #f8f9fa;
-        --text-muted: #adb5bd;
-        --border-color: #2c2c2c;
-        --primary-color: #3d8bfd;
-        --accent-color: #ff922b;
-        --tag-bg: #1c2d42;
-        --tag-text: #6ea8fe;
-        --timeline-line: #3f4448;
-        --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      }
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+  body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding-bottom: 40px; }
+  
+  .container { max-width: 680px; margin: 0 auto; padding: 20px 16px; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+  /* Header Header */
+  header { text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #0d3b2e 0%, #175241 100%); color: #fff; border-radius: 16px; margin-bottom: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  header::after { content: "🇲🇾"; position: absolute; right: -10px; bottom: -10px; font-size: 80px; opacity: 0.15; }
+  header h1 { font-size: 1.5rem; font-weight: 700; color: var(--accent-color); letter-spacing: 1px; margin-bottom: 8px; }
+  header p { font-size: 0.85rem; opacity: 0.9; font-weight: 300; }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.5;
-      padding-bottom: 40px;
-    }
+  /* Map Container */
+  .section-title { font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin: 24px 0 12px 0; display: flex; align-items: center; gap: 8px; }
+  @media (prefers-color-scheme: dark) { .section-title { color: var(--accent-color); } }
+  #map { height: 260px; width: 100%; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: var(--shadow); margin-bottom: 24px; z-index: 1; }
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 16px;
-    }
+  /* Card Component */
+  .card { background: var(--card-bg); border-radius: 14px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow); transition: transform 0.2s; }
+  
+  /* Flight Component */
+  .flight-box { display: flex; justify-content: space-between; align-items: center; background: rgba(197, 160, 89, 0.08); padding: 12px 16px; border-radius: 10px; margin-top: 8px; }
+  .flight-loc { font-weight: bold; font-size: 1rem; }
+  .flight-arrow { color: var(--accent-color); font-size: 0.8rem; }
 
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+  /* Hotel Specifics */
+  .hotel-meta { margin-top: 10px; padding-top: 10px; border-top: 1px stroke var(--border-color); font-size: 0.85rem; color: var(--text-muted); }
+  .map-btn { display: inline-flex; align-items: center; gap: 6px; background-color: var(--primary-color); color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; margin-top: 10px; font-weight: 500; }
 
-    header h1 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
+  /* Interactive Todo List */
+  .todo-list { list-style: none; }
+  .todo-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dotted var(--border-color); }
+  .todo-item:last-child { border-bottom: none; }
+  .todo-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary-color); cursor: pointer; }
+  .todo-item input[type="checkbox"]:checked + span { text-decoration: line-through; opacity: 0.5; }
 
-    header p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-    }
-
-    /* 1. 顶部倒计时卡片 */
-    .countdown-card {
-      background: linear-gradient(135deg, var(--primary-color), #0b5ed7);
-      color: #ffffff;
-      border: none;
-      text-align: center;
-    }
-
-    .countdown-card .next-event {
-      font-size: 0.85rem;
-      opacity: 0.9;
-      margin-bottom: 8px;
-    }
-
-    .countdown-card .event-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .timer-grid {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .timer-unit {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      padding: 8px 10px;
-      min-width: 55px;
-    }
-
-    .timer-unit .val {
-      font-size: 1.4rem;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-
-    .timer-unit .lbl {
-      font-size: 0.65rem;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-
-    /* 2. SVG 手绘感地图 */
-    .section-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .map-container {
-      width: 100%;
-      text-align: center;
-    }
-
-    .map-svg {
-      width: 100%;
-      height: auto;
-      max-height: 280px;
-    }
-
-    /* 3. 预订卡片网格 */
-    .booking-item {
-      padding: 12px 0;
-      border-bottom: 1px dashed var(--border-color);
-    }
-
-    .booking-item:last-child {
-      border-bottom: none;
-    }
-
-    .booking-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-
-    .booking-title {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    .booking-detail {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* 4. 逐日行程 */
-    .day-card {
-      margin-bottom: 16px;
-    }
-
-    .day-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      user-select: none;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .day-title {
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .day-date {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-left: 6px;
-      font-weight: normal;
-    }
-
-    .btn-nav-all {
-      font-size: 0.75rem;
-      color: var(--primary-color);
-      background: var(--tag-bg);
-      border: none;
-      padding: 4px 8px;
-      border-radius: 12px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 20px;
-      margin-top: 12px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 4px;
-      bottom: 4px;
-      width: 2px;
-      background: var(--timeline-line);
-    }
-
-    .tl-item {
-      position: relative;
-      margin-bottom: 14px;
-    }
-
-    .tl-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .tl-node {
-      position: absolute;
-      left: -20px;
-      top: 4px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--primary-color);
-    }
-
-    .tl-time {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
-    .tl-content {
-      font-size: 0.85rem;
-      margin-top: 2px;
-    }
-
-    .map-link {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .map-link:hover {
-      text-decoration: underline;
-    }
-
-    .badge-ticket {
-      font-size: 0.7rem;
-      background: var(--accent-color);
-      color: #fff;
-      padding: 1px 4px;
-      border-radius: 3px;
-      margin-left: 4px;
-    }
-
-    /* 5. 待办清单 & 6. 实用贴士 */
-    .list-item {
-      font-size: 0.85rem;
-      padding: 6px 0;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .list-item:last-child {
-      border-bottom: none;
-    }
-
-    .bullet {
-      color: var(--primary-color);
-      font-weight: bold;
-    }
-
-    .note-box {
-      background: var(--tag-bg);
-      border-left: 3px solid var(--primary-color);
-      padding: 10px;
-      font-size: 0.8rem;
-      color: var(--text-main);
-      border-radius: 0 8px 8px 0;
-      margin-top: 8px;
-    }
-  </style>
+  /* Timeline */
+  .timeline-item { position: relative; padding-left: 24px; margin-bottom: 16px; border-left: 2px solid var(--accent-color); }
+  .timeline-item::before { content: ""; position: absolute; left: -6px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-color); }
+  .day-badge { background: var(--primary-color); color: #fff; font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600; display: inline-block; margin-bottom: 4px; }
+  
+  .tag { display: inline-block; background: rgba(13, 59, 46, 0.08); color: var(--primary-color); font-size: 0.75rem; padding: 2px 6px; border-radius: 4px; margin-right: 4px; }
+</style>
 </head>
 <body>
 
 <div class="container">
   <header>
-    <h1>🇲🇾 马来西亚11日游行程手册</h1>
-    <p>2026.09.12 - 09.24 | 4人同行 (小赵、小陈、小黄、小李)</p>
+    <h1>马来西亚奢享与探索之旅</h1>
+    <p>📅 2026.09.12 - 2026.09.22 (11天10晚)</p>
   </header>
 
-  <!-- 1. 顶部倒计时卡片 -->
-  <div class="card countdown-card">
-    <div class="next-event">下一站行程</div>
-    <div class="event-title" id="nextEventTitle">加载中...</div>
-    <div class="timer-grid">
-      <div class="timer-unit"><div class="val" id="d">00</div><div class="lbl">天</div></div>
-      <div class="timer-unit"><div class="val" id="h">00</div><div class="lbl">时</div></div>
-      <div class="timer-unit"><div class="val" id="m">00</div><div class="lbl">分</div></div>
-      <div class="timer-unit"><div class="val" id="s">00</div><div class="lbl">秒</div></div>
+  <!-- 地图路线 -->
+  <div class="section-title">🗺️ 路线规划地图</div>
+  <div id="map"></div>
+
+  <!-- 待办事项 -->
+  <div class="section-title">☑️ 出发前待办清单</div>
+  <div class="card">
+    <ul class="todo-list">
+      <li class="todo-item"><input type="checkbox"><span>填写入境卡 MDAC (入境前3天内)</span></li>
+      <li class="todo-item"><input type="checkbox"><span>准备护照 (有效期6个月以上)</span></li>
+      <li class="todo-item"><input type="checkbox"><span>开通国际漫游或购买马来西亚 e-SIM 卡</span></li>
+      <li class="todo-item"><input type="checkbox"><span>预先下载 Grab (东南亚打车/外卖必备)</span></li>
+      <li class="todo-item"><input type="checkbox"><span>准备少量马币现金 (旅游税/小费备用)</span></li>
+    </ul>
+  </div>
+
+  <!-- 核心航班 -->
+  <div class="section-title">✈️ 航班大交通</div>
+  <div class="card">
+    <div class="flight-box">
+      <div><div class="flight-loc">成都天府 T1</div><div style="font-size:0.75rem;">09-12 00:05</div></div>
+      <div class="flight-arrow">✈️ 直飞 4h35m</div>
+      <div><div class="flight-loc">吉隆坡 T1</div><div style="font-size:0.75rem;">09-12 04:40</div></div>
+    </div>
+    <div class="flight-box" style="margin-top:10px;">
+      <div><div class="flight-loc">吉隆坡 T1</div><div style="font-size:0.75rem;">09-22 18:00</div></div>
+      <div class="flight-arrow">✈️ 直飞 4h40m</div>
+      <div><div class="flight-loc">成都天府 T1</div><div style="font-size:0.75rem;">09-22 22:40</div></div>
     </div>
   </div>
 
-  <!-- 2. 行程总览地图 (SVG 手绘视觉) -->
+  <!-- 住宿精选 -->
+  <div class="section-title">🏨 住宿预订与备注</div>
+  
   <div class="card">
-    <div class="section-title">🗺️ 行程路线总览</div>
-    <div class="map-container">
-      <svg class="map-svg" viewBox="0 0 400 210" xmlns="http://www.w3.org/2000/svg">
-        <!-- 海洋背景/装饰 -->
-        <path d="M 10 100 Q 100 80, 200 110 T 390 100" fill="none" stroke="var(--border-color)" stroke-dasharray="4,4" stroke-width="1"/>
-        
-        <!-- 路线轨迹 (不同段落用不同颜色) -->
-        <!-- 槟城 -> 怡保 (包车) -->
-        <path d="M 70 50 Q 80 80, 100 100" fill="none" stroke="#e63946" stroke-width="3" stroke-linecap="round"/>
-        <!-- 怡保 -> 吉隆坡 (包车) -->
-        <path d="M 100 100 Q 120 130, 150 160" fill="none" stroke="#2a9d8f" stroke-width="3" stroke-linecap="round"/>
-        <!-- 吉隆坡 -> 登嘉楼 (飞行) -->
-        <path d="M 150 160 Q 230 110, 310 70" fill="none" stroke="#e76f51" stroke-width="2.5" stroke-dasharray="5,5"/>
-        <!-- 登嘉楼 -> 热浪岛 (船船) -->
-        <path d="M 310 70 L 350 40" fill="none" stroke="#00b4d8" stroke-width="2.5"/>
-
-        <!-- 节点标注 -->
-        <!-- 槟城 -->
-        <circle cx="70" cy="50" r="7" fill="#e63946"/>
-        <text x="70" y="35" font-size="11" font-weight="bold" fill="var(--text-main)" text-anchor="middle">槟城 (9.12-16)</text>
-        <text x="70" y="68" font-size="9" fill="var(--text-muted)" text-anchor="middle">宿: 万怡酒店</text>
-
-        <!-- 怡保 -->
-        <circle cx="100" cy="100" r="6" fill="#2a9d8f"/>
-        <text x="60" y="105" font-size="11" font-weight="bold" fill="var(--text-main)">怡保 (9.16)</text>
-        <text x="60" y="117" font-size="9" fill="var(--text-muted)">宿: AC酒店</text>
-
-        <!-- 吉隆坡 -->
-        <circle cx="150" cy="160" r="7" fill="#f4a261"/>
-        <text x="150" y="180" font-size="11" font-weight="bold" fill="var(--text-main)" text-anchor="middle">吉隆坡 (9.17/21-23)</text>
-        <text x="150" y="193" font-size="9" fill="var(--text-muted)" text-anchor="middle">宿: 美利亚酒店/待定</text>
-
-        <!-- 登嘉楼 -->
-        <circle cx="310" cy="70" r="6" fill="#e76f51"/>
-        <text x="310" y="88" font-size="11" font-weight="bold" fill="var(--text-main)" text-anchor="middle">登嘉楼 (9.18)</text>
-        <text x="310" y="100" font-size="9" fill="var(--text-muted)" text-anchor="middle">宿: 中华村</text>
-
-        <!-- 热浪岛 -->
-        <circle cx="350" cy="40" r="7" fill="#00b4d8"/>
-        <text x="350" y="25" font-size="11" font-weight="bold" fill="var(--text-main)" text-anchor="middle">热浪岛 (9.19-21)</text>
-        <text x="350" y="55" font-size="9" fill="var(--text-muted)" text-anchor="middle">宿: 彩虹度假村</text>
-      </svg>
+    <strong>📍 槟城 (Penang)</strong>
+    <p style="font-size:0.9rem; margin-top:4px;">槟城古迹精品酒店 (示例)</p>
+    <div class="hotel-meta">
+      <div>💰 <strong>预估税费：</strong> 旅游税 MYR 10/晚/房 (现场支付)</div>
+      <div>💵 <strong>押金需求：</strong> MYR 200 (刷卡/现金)</div>
+      <a href="https://maps.google.com/?q=Penang" target="_blank" class="map-btn">📍 在 Google Maps 中打开</a>
     </div>
   </div>
 
-  <!-- 3. 已确认大交通与预订 -->
   <div class="card">
-    <div class="section-title">✈️ 预订凭证与交通住宿</div>
+    <strong>📍 怡保 (Ipoh)</strong>
+    <p style="font-size:0.9rem; margin-top:4px;">怡保温泉度假酒店 (示例)</p>
+    <div class="hotel-meta">
+      <div>💰 <strong>预估税费：</strong> 旅游税 MYR 10/晚/房</div>
+      <div>💵 <strong>押金需求：</strong> MYR 100</div>
+      <a href="https://maps.google.com/?q=Ipoh" target="_blank" class="map-btn">📍 在 Google Maps 中打开</a>
+    </div>
+  </div>
+
+  <!-- 每日行程 -->
+  <div class="section-title">🗓️ 详细行程安排</div>
+  
+  <div class="card">
+    <div class="timeline-item">
+      <span class="day-badge">DAY 1 - 09.12</span>
+      <p>✈️ <strong>抵达吉隆坡 -> 专车前往槟城</strong></p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">🚗 包车接机前往槟城 | 🍧 晚餐品尝乔治市夜市龙虾面/煎𦵃</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="day-badge">DAY 2 - 09.13</span>
+      <p>📍 <strong>槟城南洋风情一日游</strong></p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">📍 游览壁画街、张弼士故居(蓝屋) | 🍧 午餐煎𦵃、炒粿条</p>
+    </div>
+
+    <div class="timeline-item">
+      <span class="day-badge">DAY 3 - 09.14</span>
+      <p>🚗 <strong>槟城 -> 怡保 (包车移防)</strong></p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">📍 途经极乐寺 | 🍧 怡保芽菜鸡、白咖啡晚餐</p>
+    </div>
     
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">四川航空 3U3911</span>
-        <span class="tag">机票</span>
-      </div>
-      <div class="booking-detail">09-12 20:05 成都天府 T1 → 00:05(+1) 槟城国际</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">槟城万怡酒店 (4晚)</span>
-        <span class="tag">住宿</span>
-      </div>
-      <div class="booking-detail">09.12 - 09.16 | 豪华双床房 2间</div>
-      <div class="booking-detail">📍 218D, Jln Macalister, Penang</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">包车：槟城 → 怡保</span>
-        <span class="tag">陆路包车</span>
-      </div>
-      <div class="booking-detail">09-16 上午出发 | 预估车程约 2 - 2.5 小时</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">怡保万豪 AC 酒店 (1晚)</span>
-        <span class="tag">住宿</span>
-      </div>
-      <div class="booking-detail">09.16 - 09.17 | 尊贵豪华双床房 2间</div>
-      <div class="booking-detail">📍 88 Jalan Sultan Abdul Jalil, Greentown, Ipoh</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">包车：怡保 → 吉隆坡</span>
-        <span class="tag">陆路包车</span>
-      </div>
-      <div class="booking-detail">09-17 下午出发 | 预估车程约 2.5 - 3 小时</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">吉隆坡美利亚酒店 (1晚)</span>
-        <span class="tag">住宿</span>
-      </div>
-      <div class="booking-detail">09.17 - 09.18 | 美利亚房 2间</div>
-      <div class="booking-detail">📍 16 Jalan Imbi, 武吉免登, Kuala Lumpur</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">亚洲航空 AK6218 (小赵、小陈)</span>
-        <span class="tag">机票</span>
-      </div>
-      <div class="booking-detail">09-18 16:10 吉隆坡 T2 → 17:10 登嘉楼</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">alvilla@kampung cina (1晚)</span>
-        <span class="tag">住宿</span>
-      </div>
-      <div class="booking-detail">09.18 - 09.19 | 超级单人房(双床) 1间 (小赵、小陈)</div>
-      <div class="booking-detail">📍 Jalan Kampung Cina, Kampung Banggu 108, Kuala Terengganu</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">热浪岛彩虹度假村 (2晚)</span>
-        <span class="tag">全食宿配套</span>
-      </div>
-      <div class="booking-detail">09.19 - 09.21 | 豪华双人房 (含来回船接送+餐食+出海浮潜)</div>
-      <div class="booking-detail">💰 尾款现场/上岛前支付：RM 1050 (微信已付定金 RM400)</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">亚洲航空 AK6219 (小赵、小陈)</span>
-        <span class="tag">机票</span>
-      </div>
-      <div class="booking-detail">09-21 17:45 登嘉楼 → 18:45 吉隆坡 T2</div>
-    </div>
-
-    <div class="booking-item">
-      <div class="booking-header">
-        <span class="booking-title">四川航空 3U3994 (小赵、小陈)</span>
-        <span class="tag">机票</span>
-      </div>
-      <div class="booking-detail">09-24 00:20 吉隆坡 T1 → 04:50 成都天府 T1</div>
+    <div class="timeline-item">
+      <span class="day-badge">DAY 11 - 09.22</span>
+      <p>✈️ <strong>吉隆坡 -> 成都 (返程)</strong></p>
+      <p style="font-size:0.85rem; color:var(--text-muted);">🛍️ 机场免税店购物 | ✈️ 18:00 飞往成都</p>
     </div>
   </div>
 
-  <!-- 4. 逐日行程卡片 -->
-  <div class="card">
-    <div class="section-title">📅 逐日详细行程</div>
-
-    <!-- Day 1 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 1</span><span class="day-date">9月12日 (周五) - 启程与抵达</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">17:30</div>
-          <div class="tl-content">成都天府国际机场 T1 集合办理登机</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">20:05 - 00:05(+1)</div>
-          <div class="tl-content">搭乘川航 3U3911 飞往槟城</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">01:00</div>
-          <div class="tl-content">打车前往 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Courtyard+Penang" target="_blank">槟城万怡酒店</a> 办理入住</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 2 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 2</span><span class="day-date">9月13日 (周六) - 乔治市人文散步</span></div>
-        <a class="btn-nav-all" href="https://www.google.com/maps/dir/?api=1&destination=Penang+Street+Art&waypoints=Pinang+Peranakan+Mansion%7CKek+Lok+Si+Temple" target="_blank">🗺️ 一键全天导航</a>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:30</div>
-          <div class="tl-content">享用槟城亚参叻沙 / 椰浆饭早餐</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">10:30</div>
-          <div class="tl-content">游览 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pinang+Peranakan+Mansion" target="_blank">娘惹博物馆</a> <span class="badge-ticket">需现场购票</span></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">14:00</div>
-          <div class="tl-content"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Penang+Street+Art" target="_blank">壁画街 (George Town Street Art)</a> 寻宝打卡 & 壁画漫步</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">17:00</div>
-          <div class="tl-content">前往 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Clan+Jetties+of+Penang" target="_blank">姓氏桥 (姓周桥)</a> 观赏日落</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">19:00</div>
-          <div class="tl-content"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Gurney+Drive+Hawker+Centre" target="_blank">新关仔角夜市</a> 扫街小吃</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 3</span><span class="day-date">9月14日 (周日) - 升旗山与极乐寺</span></div>
-        <a class="btn-nav-all" href="https://www.google.com/maps/dir/?api=1&destination=Kek+Lok+Si+Temple&waypoints=Penang+Hill+Funicular+Station" target="_blank">🗺️ 一键全天导航</a>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">08:30</div>
-          <div class="tl-content">乘坐缆车登 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Penang+Hill" target="_blank">升旗山 (Penang Hill)</a> <span class="badge-ticket">建议提前网购快速通廊缆车票</span></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">12:30</div>
-          <div class="tl-content">山下享用炒粿条与红豆冰</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">14:00</div>
-          <div class="tl-content">参观 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kek+Lok+Si+Temple" target="_blank">极乐寺 (Kek Lok Si Temple)</a></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">18:00</div>
-          <div class="tl-content">汕头街 (Kimberley Street) 尝天皇鸡脚、权记鸭粥粿汁</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 4</span><span class="day-date">9月15日 (周一) - 国家公园或海边休闲</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:30</div>
-          <div class="tl-content"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Penang+National+Park" target="_blank">槟城国家公园</a> 徒步前往猴子海滩 或 芭多丁宜海滩水上活动</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">15:00</div>
-          <div class="tl-content">张弼士故居 (蓝屋) 导揽讲解 <span class="badge-ticket">需提前预约场次</span></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">18:30</div>
-          <div class="tl-content">精细海鲜晚餐，收拾行李准备次日包车</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 5</span><span class="day-date">9月16日 (周二) - 槟城包车前往怡保</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:30</div>
-          <div class="tl-content">退房，包车司机至酒店接人，前往怡保 (车程程约 2.5h)</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">12:30</div>
-          <div class="tl-content">抵达怡保，午餐享用芽菜鸡 (黄高记/老黄) & 怡保白咖啡</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">15:00</div>
-          <div class="tl-content">入住 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=AC+Hotel+by+Marriott+Ipoh" target="_blank">怡保万豪 AC 酒店</a></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">16:00</div>
-          <div class="tl-content">漫步 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Concubine+Lane+Ipoh" target="_blank">二奶巷 (Concubine Lane)</a> 尝豆腐花、盐焗鸡</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 6 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 6</span><span class="day-date">9月17日 (周三) - 怡保洞穴寺庙 → 包车至吉隆坡</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:30</div>
-          <div class="tl-content">游览 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kek+Lok+Tong" target="_blank">极乐洞 (Kek Lok Tong)</a> 或 霹雳洞</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">12:00</div>
-          <div class="tl-content">退房并在怡保午餐</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">14:00</div>
-          <div class="tl-content">包车前往吉隆坡 (车程约 2.5-3h)</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">17:00</div>
-          <div class="tl-content">入住 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Melia+Kuala+Lumpur" target="_blank">吉隆坡美利亚酒店</a></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">19:00</div>
-          <div class="tl-content"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Jalan+Alor" target="_blank">阿罗街 (Jalan Alor)</a> 夜市美食</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 7 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 7</span><span class="day-date">9月18日 (周五) - 行程分流日</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">10:00</div>
-          <div class="tl-content">打卡 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Petronas+Twin+Towers" target="_blank">双子塔 (KLCC)</a> / 武吉免登商圈购物</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">13:30</div>
-          <div class="tl-content">【小赵、小陈】出发前往吉隆坡机场 T2</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">16:10 - 17:10</div>
-          <div class="tl-content">【小赵、小陈】亚航 AK6218 飞往登嘉楼</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">18:00</div>
-          <div class="tl-content">【小赵、小陈】入住 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=alvilla+kampung+cina" target="_blank">中华村民宿</a>，唐人街晚宴</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">全天</div>
-          <div class="tl-content">【小黄、小李】吉隆坡市区自由行 (独立广场/国家清真寺)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 8 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 8</span><span class="day-date">9月19日 (周六) - 登岛彩虹度假村</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">07:30</div>
-          <div class="tl-content">【小赵、小陈】度假村接驳车至墨浪码头 (Merang Jetty)</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:00 - 10:30</div>
-          <div class="tl-content">乘船入岛，入住 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Redang+Pelangi+Resort" target="_blank">热浪岛彩虹度假村</a></div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">12:00</div>
-          <div class="tl-content">度假村自助午餐</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">14:30</div>
-          <div class="tl-content">第一次出海浮潜活动 🤿</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">19:00</div>
-          <div class="tl-content">度假村晚餐 & 沙滩晚会/自由活动</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 9 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 9</span><span class="day-date">9月20日 (周日) - 热浪岛浮潜 / 小黄小李回程</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">09:30 & 14:30</div>
-          <div class="tl-content">【小赵、小陈】海洋公园浮潜 + 深度浮潜 🐢</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">12:00</div>
-          <div class="tl-content">【小黄、小李】吉隆坡酒店退房前往机场</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">15:00</div>
-          <div class="tl-content">【小黄、小李】搭乘航班返回成都 ✈️</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 10 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 10</span><span class="day-date">9月21日 (周一) - 离岛重聚吉隆坡</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">08:00 - 09:30</div>
-          <div class="tl-content">【小赵、小陈】度假村退房，乘船返回墨浪码头</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">11:00 - 15:30</div>
-          <div class="tl-content">登嘉楼市区游览/唐人街午餐</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">17:45 - 18:45</div>
-          <div class="tl-content">亚航 AK6219 返回吉隆坡 T2</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">20:00</div>
-          <div class="tl-content">入住吉隆坡新酒店 (待定)</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Day 11 & Day 12 -->
-    <div class="day-card">
-      <div class="day-header">
-        <div><span class="day-title">Day 11-12</span><span class="day-date">9月22日-24日 - 最后的采买与返程</span></div>
-      </div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">9.22 全天</div>
-          <div class="tl-content">吉隆坡黑风洞 (Batu Caves) / Pavilion 购物</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">9.23 21:00</div>
-          <div class="tl-content">前往吉隆坡国际机场 T1 办理登机</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-node"></div>
-          <div class="tl-time">9.24 00:20 - 04:50</div>
-          <div class="tl-content">四川航空 3U3994 飞抵成都天府 T1，行程完美结束！</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 5. 待办清单 (静态列表) -->
-  <div class="card">
-    <div class="section-title">📋 待办事项清单 (待完成)</div>
-    <div class="list-item"><span class="bullet">•</span> 预订吉隆坡 9.21 - 9.23 住宿 (小赵、小陈 2晚)</div>
-    <div class="list-item"><span class="bullet">•</span> 填写入境卡 MDAC (入境前 3 天内完成在线申报)</div>
-    <div class="list-item"><span class="bullet">•</span> 确认槟城-怡保包车司机联系方式与车号</div>
-    <div class="list-item"><span class="bullet">•</span> 购买预装 eSIM 或马来西亚电话卡</div>
-    <div class="list-item"><span class="bullet">•</span> 准备马币现金 (用于热浪岛保育费 RM30/人 及小吃摊)</div>
-  </div>
-
-  <!-- 6. 实用贴士 -->
-  <div class="card">
-    <div class="section-title">💡 实用贴士 & 避坑指南</div>
-    <div class="list-item"><span class="bullet">1.</span> <b>热浪岛上岛税：</b> 须在码头现场支付海洋公园保育基金 (非马来西亚公民 RM 30/成人)。</div>
-    <div class="list-item"><span class="bullet">2.</span> <b>打车软件：</b> 全境推荐使用 <b>Grab</b>，吉隆坡与槟城叫车非常方便，支持绑定信用卡或现金。</div>
-    <div class="list-item"><span class="bullet">3.</span> <b>插座接口：</b> 马来西亚使用英标三孔插座 (G型)，需带转换头。</div>
-    <div class="list-item"><span class="bullet">4.</span> <b>酒店防暑防蚊：</b> 热浪岛及户外景点防蚊液必备；进入清真寺需穿长裤/长裙覆盖膝盖。</div>
-    <div class="note-box">
-      ⚠️ <b>提示：</b> 办完待办事项后告诉我，我随时为您更新此公开页面！
-    </div>
-  </div>
 </div>
 
+<!-- 地图脚本 -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-  // 行程时间节点定义 (带 GMT+0800 时区)
-  const scheduleEvents = [
-    { title: "川航 3U3911 起飞 (成都天府)", time: "2026-09-12T20:05:00+08:00" },
-    { title: "包车前往怡保", time: "2026-09-16T09:30:00+08:00" },
-    { title: "包车前往吉隆坡", time: "2026-09-17T14:00:00+08:00" },
-    { title: "亚航 AK6218 起飞去登嘉楼", time: "2026-09-18T16:10:00+08:00" },
-    { title: "登船前往热浪岛彩虹度假村", time: "2026-09-19T08:30:00+08:00" },
-    { title: "亚航 AK6219 返回吉隆坡", time: "2026-09-21T17:45:00+08:00" },
-    { title: "川航 3U3994 返程成都", time: "2026-09-24T00:20:00+08:00" }
+  // 初始化地图 (聚焦马来西亚西马)
+  var map = L.map('map').setView([4.2105, 101.9758], 6);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 18,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  // 标记坐标
+  var points = [
+    { name: "吉隆坡 ✈️", lat: 2.7456, lng: 101.7072 },
+    { name: "怡保 📍", lat: 4.5975, lng: 101.0901 },
+    { name: "槟城 📍", lat: 5.4164, lng: 100.3327 }
   ];
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    let nextEvent = null;
+  var latlngs = [];
+  points.forEach(function(pt) {
+    var marker = L.marker([pt.lat, pt.lng]).addTo(map);
+    marker.bindPopup("<b>" + pt.name + "</b>");
+    latlngs.push([pt.lat, pt.lng]);
+  });
 
-    for (let ev of scheduleEvents) {
-      const evTime = new Date(ev.time).getTime();
-      if (evTime > now) {
-        nextEvent = { title: ev.title, target: evTime };
-        break;
-      }
-    }
-
-    if (!nextEvent) {
-      document.getElementById("nextEventTitle").innerText = "行程进行中 / 已结束";
-      document.getElementById("d").innerText = "00";
-      document.getElementById("h").innerText = "00";
-      document.getElementById("m").innerText = "00";
-      document.getElementById("s").innerText = "00";
-      return;
-    }
-
-    document.getElementById("nextEventTitle").innerText = nextEvent.title;
-    const diff = nextEvent.target - now;
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("d").innerText = String(days).padStart(2, '0');
-    document.getElementById("h").innerText = String(hours).padStart(2, '0');
-    document.getElementById("m").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("s").innerText = String(seconds).padStart(2, '0');
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+  // 连线
+  var polyline = L.polyline(latlngs, {color: '#c5a059', weight: 3, opacity: 0.8, dashArray: '6, 6'}).addTo(map);
 </script>
 
 </body>

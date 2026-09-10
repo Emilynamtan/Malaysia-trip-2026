@@ -30,6 +30,13 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+    background:
+      radial-gradient(640px 420px at 88% 6%, rgba(196,160,92,.16), transparent 70%),
+      radial-gradient(520px 420px at 6% 52%, rgba(196,160,92,.11), transparent 70%),
+      radial-gradient(560px 420px at 78% 96%, rgba(160,178,150,.12), transparent 70%);
+  }
   body{
     background:var(--bg);
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='76' height='76' viewBox='0 0 76 76'%3E%3Cg fill='none' stroke='%2314523c' stroke-width='1' opacity='0.055'%3E%3Crect x='6' y='6' width='64' height='64' rx='8'/%3E%3Cpath d='M38 20 q10 10 0 20 q-10 -10 0 -20 Z'/%3E%3Cpath d='M38 56 q-10 -10 0 -20 q10 10 0 20 Z'/%3E%3Cpath d='M20 38 q10 -10 20 0 q-10 10 -20 0 Z'/%3E%3Cpath d='M56 38 q-10 10 -20 0 q10 -10 20 0 Z'/%3E%3Ccircle cx='38' cy='38' r='4.5'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='66' cy='10' r='2'/%3E%3Ccircle cx='10' cy='66' r='2'/%3E%3Ccircle cx='66' cy='66' r='2'/%3E%3C/g%3E%3C/svg%3E");
@@ -110,9 +117,18 @@
   }
   h2.sec::after{content:"";flex:1;border-top:1px solid var(--line);align-self:center}
   .card{
-    background:var(--paper);border:1px solid var(--line);
-    border-radius:20px;
-    padding:20px 22px;box-shadow:var(--shadow);
+    position:relative;
+    background:linear-gradient(135deg,
+      color-mix(in srgb, var(--gold) 17%, transparent) 0%,
+      color-mix(in srgb, #f2ead2 62%, transparent) 38%,
+      color-mix(in srgb, #efe6c8 55%, transparent) 62%,
+      color-mix(in srgb, var(--gold) 9%, transparent) 100%);
+    -webkit-backdrop-filter:blur(18px) saturate(135%);
+    backdrop-filter:blur(18px) saturate(135%);
+    border:1px solid color-mix(in srgb, var(--gold) 26%, transparent);
+    border-radius:22px;
+    padding:20px 22px;
+    box-shadow:0 12px 32px rgba(23,58,45,.09), inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(169,138,82,.12);
   }
   .card + .card{margin-top:14px}
 
@@ -150,9 +166,9 @@
   #map .card{
     position:relative;z-index:1;padding:14px 12px 10px;
     background:linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 9%, transparent) 0%,
-      color-mix(in srgb, var(--paper) 70%, transparent) 42%,
-      color-mix(in srgb, var(--c4) 12%, transparent) 100%);
+      color-mix(in srgb, var(--gold) 20%, transparent) 0%,
+      color-mix(in srgb, #f2ead2 58%, transparent) 40%,
+      color-mix(in srgb, var(--c4) 10%, transparent) 100%);
     -webkit-backdrop-filter:blur(16px) saturate(150%);
     backdrop-filter:blur(16px) saturate(150%);
     border:1px solid color-mix(in srgb, var(--ink) 14%, transparent);
@@ -160,7 +176,22 @@
     box-shadow:0 14px 40px rgba(23,58,45,.14), inset 0 1px 0 rgba(255,255,255,.35);
   }
   @media (prefers-color-scheme: dark){
+    .card{
+      background:linear-gradient(135deg,
+        color-mix(in srgb, var(--gold) 15%, transparent) 0%,
+        color-mix(in srgb, #2e2a1c 50%, transparent) 38%,
+        color-mix(in srgb, #26301f 46%, transparent) 62%,
+        color-mix(in srgb, var(--gold) 8%, transparent) 100%);
+      border-color:color-mix(in srgb, var(--gold) 24%, transparent);
+      box-shadow:0 12px 32px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.07), inset 0 -1px 0 rgba(200,171,114,.10);
+    }
     #map .card{box-shadow:0 14px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08)}
+    body::before{
+      background:
+        radial-gradient(640px 420px at 88% 6%, rgba(200,171,114,.10), transparent 70%),
+        radial-gradient(520px 420px at 6% 52%, rgba(200,171,114,.07), transparent 70%),
+        radial-gradient(560px 420px at 78% 96%, rgba(108,191,156,.08), transparent 70%);
+    }
   }
   #map svg{width:100%;height:auto;display:block}
   #map .legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:10px 12px 6px;font-size:12px;color:var(--muted)}

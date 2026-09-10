@@ -7,265 +7,297 @@
 <title>马来西亚疯狂季 · 四人小分队</title>
 <style>
   :root{
-    --bg:#faf6ee; --paper:#fffdf7; --ink:#33302a; --muted:#8a8577; --line:#e4dcc8;
-    --accent:#d95d39; --warn:#c2571f; --ok:#2e8f6e;
-    --c1:#d95d39; --c2:#d99a1f; --c3:#5b7fd4; --c4:#2e9e8f; --c5:#a75bb8;
-    --map-sea:#eaf2f3; --map-land:#f6eed9; --map-ink:#7a7460;
-    --shadow:3px 4px 0 rgba(90,80,50,.10);
+    --bg:#f2eee3; --paper:#fcfaf3; --ink:#20302a; --muted:#7f8781; --line:#e2dcc9;
+    --accent:#14523c; --accent-soft:#e4ede6; --gold:#a98a52; --warn:#b05c2d; --ok:#2e7d5f;
+    --c1:#b65c3f; --c2:#b8933f; --c3:#4c6ea6; --c4:#33796b; --c5:#7d5f9e;
+    --map-sea:#e9efe8; --map-land:#f4efdf; --map-ink:#6e7a6f;
+    --serif:"Noto Serif SC","Songti SC","STSongti-SC","SimSun",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
+    --shadow:0 10px 30px rgba(23,58,45,.08), 0 2px 6px rgba(23,58,45,.05);
   }
   @media (prefers-color-scheme: dark){
     :root{
-      --bg:#15181d; --paper:#1e2229; --ink:#e9e6dd; --muted:#98948a; --line:#333845;
-      --accent:#ef8a60; --warn:#f0a06a; --ok:#5cc29a;
-      --c1:#ef8a60; --c2:#e6b95c; --c3:#8aa5e8; --c4:#5cc9b8; --c5:#c78ad4;
-      --map-sea:#1a2027; --map-land:#2a303b; --map-ink:#8b93a3;
-      --shadow:3px 4px 0 rgba(0,0,0,.35);
+      --bg:#0e1613; --paper:#16211c; --ink:#e9e5d6; --muted:#8f9a92; --line:#28382f;
+      --accent:#7fb99b; --accent-soft:#1c2f27; --gold:#c8ab72; --warn:#d9995f; --ok:#6cbf9c;
+      --c1:#d98d6f; --c2:#d3b264; --c3:#8aa5d4; --c4:#6cbfae; --c5:#b295d6;
+      --map-sea:#14201b; --map-land:#1d2c25; --map-ink:#83928a;
+      --shadow:0 10px 30px rgba(0,0,0,.4);
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);
-    background-image:radial-gradient(rgba(120,110,80,.07) 1px, transparent 1.5px);
-    background-size:26px 26px;
     color:var(--ink);
-    font-family:-apple-system,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;
-    line-height:1.65; font-size:15px;
+    font-family:var(--sans);
+    line-height:1.7; font-size:15px;
     padding-bottom:60px;
+    -webkit-font-smoothing:antialiased;
   }
-  .hand{font-family:"Chalkboard SE","Yuanti SC","Comic Sans MS","PingFang SC",cursive,sans-serif}
-  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
-  header{padding:34px 0 8px;text-align:center}
-  header h1{font-size:30px;letter-spacing:1px}
-  header .sub{color:var(--muted);margin-top:6px;font-size:14px}
-  header .sub b{color:var(--accent);font-weight:600}
+  .hand{font-family:var(--serif)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+  /* ===== 英雄区（南洋墨绿） ===== */
+  .hero{
+    margin:18px 0 4px;position:relative;overflow:hidden;
+    border-radius:26px;color:#f2ecda;
+    background:linear-gradient(150deg,#0d382c 0%,#14523c 55%,#0c332a 100%);
+    box-shadow:var(--shadow);
+  }
+  .hero .art{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-in{position:relative;padding:34px 30px 30px}
+  .hero-kicker{
+    font-size:11px;letter-spacing:.42em;color:#cbb98a;text-transform:uppercase;
+    display:flex;align-items:center;gap:12px;
+  }
+  .hero-kicker::before{content:"";width:34px;border-top:1px solid #cbb98a;display:inline-block}
+  .hero h1{
+    font-family:var(--serif);font-weight:600;color:#f7f2e2;
+    font-size:42px;letter-spacing:6px;line-height:1.25;margin:14px 0 4px;
+  }
+  .hero .en{
+    font-family:var(--serif);font-style:italic;font-size:19px;letter-spacing:3px;
+    color:#cbb98a;margin-bottom:20px;
+  }
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .hero-tags span{
+    font-size:12px;letter-spacing:2px;color:#e8e2cb;
+    border:1px solid rgba(242,236,218,.4);border-radius:999px;padding:3px 14px;
+  }
+  .hero-date{
+    font-family:var(--serif);font-size:44px;font-weight:600;color:#f7f2e2;
+    letter-spacing:2px;line-height:1;
+  }
+  .hero-date small{
+    font-size:13px;font-family:var(--sans);letter-spacing:2px;color:#cbb98a;
+    margin-left:12px;vertical-align:6px;
+  }
+  .hero-meta{
+    display:flex;gap:26px;margin-top:20px;padding-top:16px;
+    border-top:1px solid rgba(242,236,218,.25);flex-wrap:wrap;
+  }
+  .hero-meta .k{font-size:11px;letter-spacing:.3em;color:#cbb98a;display:block;margin-bottom:2px}
+  .hero-meta .v{font-size:14px;color:#eee8d4;letter-spacing:1px}
+
   nav.jump{
-    position:sticky;top:0;z-index:50;background:var(--bg);
-    border-bottom:2px solid var(--line);
-    display:flex;gap:4px;justify-content:center;flex-wrap:wrap;
-    padding:8px 10px;
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+    display:flex;gap:6px;justify-content:center;flex-wrap:wrap;
+    padding:10px 10px;
   }
   nav.jump a{
-    color:var(--ink);text-decoration:none;font-size:13px;padding:3px 10px;
-    border:1.5px solid var(--line);border-radius:20px 8px 18px 9px;background:var(--paper);
+    color:var(--ink);text-decoration:none;font-size:12.5px;letter-spacing:1px;padding:4px 14px;
+    border:1px solid var(--line);border-radius:999px;background:var(--paper);
   }
   nav.jump a:hover{border-color:var(--accent);color:var(--accent)}
-  section{margin-top:34px}
+  section{margin-top:44px}
   h2.sec{
-    font-size:20px;margin-bottom:14px;display:flex;align-items:center;gap:10px;
+    font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:3px;
+    margin-bottom:6px;color:var(--ink);
+    display:flex;align-items:baseline;gap:14px;
   }
-  h2.sec::after{content:"";flex:1;border-top:2px dashed var(--line)}
+  h2.sec small{
+    font-family:var(--sans);font-size:10.5px;font-weight:400;letter-spacing:.3em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  h2.sec::after{content:"";flex:1;border-top:1px solid var(--line);align-self:center}
   .card{
-    background:var(--paper);border:2px solid var(--ink);
-    border-radius:255px 15px 225px 15px / 15px 225px 15px 255px;
-    padding:18px 20px;box-shadow:var(--shadow);
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:20px;
+    padding:20px 22px;box-shadow:var(--shadow);
   }
   .card + .card{margin-top:14px}
 
   /* 此刻关注 */
-  #now .card{text-align:center}
+  #now .card{text-align:center;padding:26px 22px}
   #now .label{
-    display:inline-block;background:var(--accent);color:#fff;font-size:12.5px;
-    padding:3px 14px;border-radius:16px 6px 14px 7px;margin-bottom:10px;letter-spacing:1px;
+    display:inline-block;background:var(--accent);color:#f2ecda;font-size:11px;letter-spacing:.3em;
+    padding:4px 18px;border-radius:999px;margin-bottom:14px;
   }
-  #now .evt-title{font-size:18px;font-weight:600}
-  #now .evt-time{color:var(--muted);font-size:13px;margin-top:3px}
-  .count{display:flex;justify-content:center;gap:10px;margin:18px 0 10px;flex-wrap:wrap}
-  .count .cell{min-width:74px}
+  #now .evt-title{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:1px}
+  #now .evt-time{color:var(--muted);font-size:13px;margin-top:4px}
+  .count{display:flex;justify-content:center;align-items:baseline;gap:6px;margin:22px 0 8px;flex-wrap:wrap}
+  .count .cell{min-width:70px}
   .count .num{
-    font-size:38px;font-weight:700;font-variant-numeric:tabular-nums;
-    font-family:"Chalkboard SE","Comic Sans MS",cursive,sans-serif;
-    border-bottom:3px solid var(--accent);padding:0 6px 2px;
+    font-family:var(--serif);font-size:42px;font-weight:600;color:var(--accent);
+    font-variant-numeric:tabular-nums;line-height:1.1;
   }
-  .count .unit{font-size:12px;color:var(--muted);margin-top:3px;letter-spacing:2px}
-  #now .clock{font-size:12.5px;color:var(--muted)}
+  .count .unit{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:.3em}
+  .count .sep{font-family:var(--serif);font-size:30px;color:var(--gold);padding-bottom:18px}
+  #now .clock{font-size:12.5px;color:var(--muted);margin-top:6px}
   #now .clock b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
 
   /* 地图 */
-  #map .card{padding:12px 10px 8px}
+  #map .card{padding:14px 12px 10px}
   #map svg{width:100%;height:auto;display:block}
-  #map .legend{display:flex;flex-wrap:wrap;gap:6px 16px;padding:8px 12px 6px;font-size:12px;color:var(--muted)}
+  #map .legend{display:flex;flex-wrap:wrap;gap:6px 18px;padding:10px 12px 6px;font-size:12px;color:var(--muted)}
   #map .legend span{display:inline-flex;align-items:center;gap:6px}
-  #map .legend i{width:22px;height:0;border-top:3px solid;display:inline-block;border-radius:2px}
+  #map .legend i{width:22px;height:0;border-top:2.5px solid;display:inline-block;border-radius:2px}
 
   /* 预订 */
   .bk-grid{display:flex;flex-direction:column;gap:14px}
-  .bk{padding:15px 18px}
-  .bk h3{font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .bk h3 .tag{font-size:11px;color:#fff;background:var(--ok);padding:1px 8px;border-radius:10px 4px 9px 5px;font-weight:400}
-  .bk h3 .tag.wait{background:var(--warn)}
-  .bk .row{font-size:14px;margin-top:4px}
-  .bk .row .k{color:var(--muted);font-size:12.5px;margin-right:6px}
-  .bk .money{color:var(--warn)}
-  .bk .acts{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-  .bk .acts a{
-    font-size:12.5px;text-decoration:none;color:var(--accent);
-    border:1.5px solid var(--accent);padding:2px 12px;border-radius:14px 6px 12px 7px;
+  .bk{padding:17px 20px}
+  .bk h3{font-family:var(--serif);font-size:15.5px;font-weight:600;letter-spacing:.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .bk h3 .tag{
+    font-family:var(--sans);font-size:10.5px;font-weight:400;letter-spacing:1px;color:#f2ecda;
+    background:var(--accent);padding:2px 10px;border-radius:999px;
   }
-  .bk .acts a.tel{color:var(--ink);border-color:var(--line)}
+  .bk h3 .tag.wait{background:var(--warn)}
+  .bk .row{font-size:13.5px;margin-top:5px;color:var(--ink)}
+  .bk .row .k{color:var(--muted);font-size:12px;margin-right:8px;letter-spacing:1px}
+  .bk .money{color:var(--warn)}
+  .bk .acts{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+  .bk .acts a{
+    font-size:12px;letter-spacing:1px;text-decoration:none;color:var(--accent);
+    border:1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    padding:3px 14px;border-radius:999px;
+  }
+  .bk .acts a.tel{color:var(--muted);border-color:var(--line)}
   .grp-title{font-size:15px;margin:20px 0 8px;color:var(--muted)}
 
   /* 逐日 */
   .day{padding:0;overflow:hidden}
-  .day > .head{display:flex;align-items:baseline;gap:10px;padding:14px 18px 12px;flex-wrap:wrap}
+  .day > .head{display:flex;align-items:baseline;gap:10px;padding:16px 20px 12px;flex-wrap:wrap}
   .day .date{
-    font-family:"Chalkboard SE","Comic Sans MS",cursive,sans-serif;
-    font-size:16px;font-weight:700;color:var(--accent);white-space:nowrap;
+    font-family:var(--serif);font-size:16px;font-weight:600;color:var(--accent);
+    letter-spacing:1px;white-space:nowrap;
   }
-  .day .wd{color:var(--muted);font-size:12.5px}
-  .day .ttl{font-size:15.5px;font-weight:600}
+  .day .wd{color:var(--muted);font-size:12px;letter-spacing:1px}
+  .day .ttl{font-family:var(--serif);font-size:15.5px;font-weight:600;letter-spacing:.5px}
   .day .stay{
-    margin-left:auto;font-size:11.5px;color:var(--muted);
-    border:1.5px dashed var(--line);padding:1px 9px;border-radius:12px 5px 10px 6px;white-space:nowrap;
+    margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:1px;
+    border:1px solid var(--line);padding:2px 12px;border-radius:999px;white-space:nowrap;
   }
-  .day ol{list-style:none;padding:0 18px 6px}
+  .day ol{list-style:none;padding:0 20px 8px}
   .day ol li{
-    display:flex;gap:12px;padding:7px 0;border-top:1px dashed var(--line);
+    display:flex;gap:14px;padding:9px 0;border-top:1px solid color-mix(in srgb, var(--line) 60%, transparent);
   }
   .day ol li:first-child{border-top:none}
   .day .t{
-    flex:0 0 78px;font-variant-numeric:tabular-nums;font-weight:600;font-size:13.5px;
-    color:var(--accent);padding-top:1px;
+    flex:0 0 64px;font-family:var(--serif);font-variant-numeric:tabular-nums;
+    font-weight:600;font-size:13.5px;color:var(--accent);padding-top:1px;
   }
   .day .c{flex:1;font-size:14px}
   .day .c small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
   .day .who{color:var(--muted);font-size:12px;margin-left:4px}
   .badge{
-    display:inline-block;font-size:11px;color:#fff;background:var(--warn);
-    padding:0 8px;border-radius:9px 4px 8px 5px;margin-right:5px;vertical-align:1px;
+    display:inline-block;font-family:var(--sans);font-size:10.5px;letter-spacing:1px;color:#f6efe0;
+    background:var(--warn);padding:2px 12px;border-radius:14px 6px 12px 7px;margin-right:6px;vertical-align:1px;line-height:1.4;
   }
-  a.loc{color:inherit;text-decoration:none;border-bottom:1.5px dotted var(--accent)}
+  a.loc{color:inherit;text-decoration:none;border-bottom:1px solid color-mix(in srgb, var(--gold) 60%, transparent);padding-bottom:1px}
   a.loc:hover{color:var(--accent)}
-  details.daymap{border-top:2px dashed var(--line);padding:9px 18px 14px}
+  details.daymap{border-top:1px solid var(--line);padding:10px 20px 16px}
   details.daymap summary{
-    cursor:pointer;font-size:13px;color:var(--muted);list-style:none;user-select:none;
+    cursor:pointer;font-size:12.5px;letter-spacing:1px;color:var(--muted);list-style:none;user-select:none;
   }
   details.daymap summary::before{content:"▸ ";}
   details.daymap[open] summary::before{content:"▾ ";}
-  details.daymap summary b{color:var(--accent)}
-  .daymap .chainbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  details.daymap summary b{color:var(--accent);font-weight:500}
+  .daymap .chainbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
   .daymap .chainbtns a{
-    font-size:12.5px;text-decoration:none;color:var(--c3);
-    border:1.5px solid var(--c3);padding:2px 12px;border-radius:14px 6px 12px 7px;
+    font-size:12px;letter-spacing:.5px;text-decoration:none;color:var(--accent);
+    border:1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    padding:3px 14px;border-radius:999px;
   }
-  .daymap .mode{font-size:11.5px;fill:var(--muted)}
-  .daymap .pt{font-size:12px;fill:var(--ink)}
-  .daymap .node{fill:var(--accent);stroke:var(--paper);stroke-width:2.5}
-  .daymap .path{stroke:var(--map-ink);stroke-width:2;stroke-dasharray:5 6;fill:none;stroke-linecap:round}
+  .daymap .mode{font-size:11px;fill:var(--muted)}
+  .daymap .pt{font-size:11.5px;fill:var(--ink)}
+  .daymap .node{fill:var(--accent);stroke:var(--paper);stroke-width:2}
+  .daymap .path{stroke:var(--map-ink);stroke-width:1.8;stroke-dasharray:1 6;fill:none;stroke-linecap:round}
 
   /* 待办 / 贴士 */
   .plain{padding-left:6px;list-style:none;counter-reset:todo}
   .plain li{
-    counter-increment:todo;padding:9px 4px 9px 40px;position:relative;
-    border-bottom:1px dashed var(--line);font-size:14.5px;
+    counter-increment:todo;padding:11px 4px 11px 42px;position:relative;
+    border-bottom:1px solid color-mix(in srgb, var(--line) 60%, transparent);font-size:14.5px;
   }
   .plain li:last-child{border-bottom:none}
   .plain li::before{
-    content:counter(todo);position:absolute;left:4px;top:9px;
-    width:24px;height:24px;line-height:24px;text-align:center;
-    font-family:"Chalkboard SE","Comic Sans MS",cursive,sans-serif;
-    color:var(--accent);border:2px solid var(--accent);border-radius:50% 40% 55% 45%;
-    font-size:13px;font-weight:700;
+    content:counter(todo);position:absolute;left:4px;top:11px;
+    width:25px;height:25px;line-height:25px;text-align:center;
+    font-family:var(--serif);color:var(--gold);
+    border:1px solid color-mix(in srgb, var(--gold) 60%, transparent);border-radius:50%;
+    font-size:12.5px;font-weight:600;
   }
   .plain li small{color:var(--muted)}
-  .tips{display:flex;flex-direction:column;gap:10px}
-  .tips .card{padding:13px 18px;font-size:14px}
-  .tips .card b.tt{color:var(--accent)}
-  /* 四人卡通形象 */
-  .crew{display:flex;justify-content:center;gap:4px;margin-top:14px;flex-wrap:wrap}
-  .crew figure{margin:0;width:98px;text-align:center}
-  .crew svg{width:88px;height:auto;display:block;margin:0 auto}
-  .crew figcaption{font-size:13px;color:var(--ink);margin-top:-4px;letter-spacing:1px}
-  footer{margin-top:44px;text-align:center;color:var(--muted);font-size:12px;padding:0 20px}
+  .tips{display:flex;flex-direction:column;gap:12px}
+  .tips .card{padding:15px 20px;font-size:14px}
+  .tips .card b.tt{font-family:var(--serif);color:var(--accent);letter-spacing:1px}
+  footer{margin-top:52px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px;padding:0 20px}
+  footer::before{content:"❦";display:block;color:var(--gold);font-size:14px;margin-bottom:8px}
   @media (max-width:520px){
-    .count .cell{min-width:64px}
-    .count .num{font-size:30px}
-    .day .t{flex-basis:66px;font-size:13px}
-    header h1{font-size:25px}
+    .hero-in{padding:26px 22px 24px}
+    .hero h1{font-size:32px;letter-spacing:4px}
+    .hero-date{font-size:36px}
+    .count .cell{min-width:58px}
+    .count .num{font-size:34px}
+    .count .sep{font-size:22px;padding-bottom:14px}
+    .day .t{flex-basis:58px;font-size:13px}
   }
 </style>
 </head>
 <body data-page-node-id="LukPDy45HuXA70t07Q2wwl">
 
-<header class="wrap" data-page-node-id="Yn55gM2Iok4nhxkNCEyASR">
-  <h1 class="hand" data-page-node-id="39mUD4lDP6iFwOkwymzoxC">马来西亚疯狂季</h1>
-  <div class="sub" data-page-node-id="qJQAJz9H6CYaXckucVXlkj">2026.9.12 — 9.24 · 槟城 · 怡保 · 吉隆坡 · 登嘉楼/热浪岛</div>
-  <div class="crew">
-    <figure>
-      <svg viewBox="0 0 100 122" aria-hidden="true">
-        <ellipse cx="26" cy="54" rx="8" ry="14" fill="#4a3629" stroke="var(--ink)" stroke-width="2"/>
-        <ellipse cx="74" cy="54" rx="8" ry="14" fill="#4a3629" stroke="var(--ink)" stroke-width="2"/>
-        <ellipse cx="50" cy="42" rx="23" ry="22" fill="#4a3629" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M34 78 Q50 70 66 78 L73 106 Q50 113 27 106 Z" fill="#ff8f9f" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M34 82 Q25 92 27 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M66 82 Q75 92 73 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="50" cy="46" r="20" fill="#ffe4d0" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M31 41 Q34 23 50 22 Q66 23 69 41 Q60 30 50 30 Q40 30 31 41 Z" fill="#4a3629" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="25" cy="40" r="3" fill="#ff8f9f" stroke="var(--ink)" stroke-width="1.5"/>
-        <circle cx="75" cy="40" r="3" fill="#ff8f9f" stroke="var(--ink)" stroke-width="1.5"/>
-        <circle cx="43" cy="47" r="2.3" fill="var(--ink)"/>
-        <circle cx="57" cy="47" r="2.3" fill="var(--ink)"/>
-        <path d="M45 54 Q50 58 55 54" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="37" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-        <circle cx="63" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-      </svg>
-      <figcaption>小赵</figcaption>
-    </figure>
-    <figure>
-      <svg viewBox="0 0 100 122" aria-hidden="true">
-        <path d="M25 50 Q24 18 50 17 Q76 18 75 50 L77 62 Q69 68 64 59 L65 46 Q50 35 35 46 L36 59 Q31 68 23 62 Z" fill="#2f2a33" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M34 78 Q50 70 66 78 L73 106 Q50 113 27 106 Z" fill="#7fd4c1" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M34 82 Q25 92 27 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M66 82 Q75 92 73 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="50" cy="46" r="20" fill="#ffe4d0" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M31 41 Q34 23 50 22 Q66 23 69 41 Q58 30 50 30 Q42 30 31 41 Z" fill="#2f2a33" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="43" cy="47" r="2.3" fill="var(--ink)"/>
-        <circle cx="57" cy="47" r="2.3" fill="var(--ink)"/>
-        <path d="M45 54 Q50 58 55 54" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="37" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-        <circle cx="63" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-      </svg>
-      <figcaption>小陈</figcaption>
-    </figure>
-    <figure>
-      <svg viewBox="0 0 100 122" aria-hidden="true">
-        <path d="M71 36 Q92 28 90 50 Q88 64 77 61 Q86 51 73 44 Z" fill="#6b4a2f" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <ellipse cx="50" cy="42" rx="23" ry="22" fill="#6b4a2f" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M34 78 Q50 70 66 78 L73 106 Q50 113 27 106 Z" fill="#ffcf5c" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M34 82 Q25 92 27 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M66 82 Q75 92 73 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="50" cy="46" r="20" fill="#ffe4d0" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M31 41 Q34 23 50 22 Q66 23 69 41 Q59 29 50 29 Q41 29 31 41 Z" fill="#6b4a2f" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="70" cy="38" r="3" fill="#ffcf5c" stroke="var(--ink)" stroke-width="1.5"/>
-        <circle cx="43" cy="47" r="2.3" fill="var(--ink)"/>
-        <circle cx="57" cy="47" r="2.3" fill="var(--ink)"/>
-        <path d="M45 54 Q50 58 55 54" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="37" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-        <circle cx="63" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-      </svg>
-      <figcaption>小黄</figcaption>
-    </figure>
-    <figure>
-      <svg viewBox="0 0 100 122" aria-hidden="true">
-        <path d="M26 48 Q25 19 50 18 Q75 19 74 48 L75 56 Q69 61 65 54 L65 45 Q50 34 35 45 L35 54 Q31 61 25 56 Z" fill="#3c3c46" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M72 27 L86 20 L84 33 Z" fill="#b7a4e6" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M72 27 L84 37 L88 26 Z" fill="#b7a4e6" stroke="var(--ink)" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M34 78 Q50 70 66 78 L73 106 Q50 113 27 106 Z" fill="#b7a4e6" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M34 82 Q25 92 27 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M66 82 Q75 92 73 101" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="50" cy="46" r="20" fill="#ffe4d0" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M31 41 Q34 23 50 22 Q66 23 69 41 Q60 31 50 31 Q40 31 31 41 Z" fill="#3c3c46" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="71" cy="27" r="3" fill="var(--ink)"/>
-        <circle cx="43" cy="47" r="2.3" fill="var(--ink)"/>
-        <circle cx="57" cy="47" r="2.3" fill="var(--ink)"/>
-        <path d="M45 54 Q50 58 55 54" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="37" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-        <circle cx="63" cy="52" r="3.4" fill="#ff9d8a" opacity="0.55"/>
-      </svg>
-      <figcaption>小李</figcaption>
-    </figure>
+<header class="wrap">
+  <div class="hero">
+    <svg class="art" viewBox="0 0 720 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="tile" width="52" height="52" patternUnits="userSpaceOnUse">
+          <circle cx="26" cy="26" r="3.2" fill="none" stroke="#e8dfc2" stroke-width="1"/>
+          <path d="M26 10 q6 6 0 12 q-6 -6 0 -12 Z M26 56 q6 -6 0 -12 q-6 6 0 12 Z M10 26 q6 -6 12 0 q-6 6 -12 0 Z M42 26 q-6 -6 -12 0 q6 6 12 0 Z" fill="none" stroke="#e8dfc2" stroke-width="0.8"/>
+        </pattern>
+      </defs>
+      <!-- 娘惹花砖底纹 -->
+      <rect x="0" y="0" width="720" height="380" fill="url(#tile)" opacity="0.08"/>
+      <!-- 三轮车队列（南洋剪影） -->
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.4" opacity="0.20" stroke-linecap="round">
+        <g transform="translate(430,268) scale(1.15)">
+          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z"/>
+          <circle cx="22" cy="46" r="7"/><circle cx="78" cy="46" r="7"/>
+          <path d="M50 30 q0 -8 8 -8 l16 0"/>
+          <path d="M96 44 l22 -18 6 2"/>
+          <path d="M104 44 l16 -13"/>
+        </g>
+        <g transform="translate(560,278) scale(0.8)">
+          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z"/>
+          <circle cx="22" cy="46" r="7"/><circle cx="78" cy="46" r="7"/>
+          <path d="M50 30 q0 -8 8 -8 l16 0"/>
+          <path d="M96 44 l22 -18 6 2"/>
+        </g>
+      </g>
+      <!-- 骑楼屋顶天际线 -->
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16">
+        <path d="M0 330 l0 -26 40 0 0 -10 14 0 0 10 46 0 0 -26 12 -8 12 8 0 26 52 0 0 -16 30 0 0 16 40 0 0 -30 14 -10 14 10 0 30 48 0 0 -20 34 0 0 20 44 0 0 -26 40 0"/>
+      </g>
+      <!-- 朱槿（大红花，马来西亚国花） -->
+      <g transform="translate(96,236)" stroke="#e8dfc2" fill="none" stroke-width="1.3" opacity="0.22">
+        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z"/>
+        <path d="M16 -22 q6 10 16 12"/>
+        <circle cx="14" cy="-20" r="2.5"/>
+      </g>
+      <g transform="translate(180,300) scale(0.6)" stroke="#e8dfc2" fill="none" stroke-width="1.5" opacity="0.14">
+        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z"/>
+      </g>
+      <!-- 槟榔/椰树线条 -->
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16" stroke-linecap="round">
+        <path d="M640 340 q-2 -60 -14 -96 M626 244 q-26 -18 -52 -14 M626 244 q-4 -28 -20 -40 M626 244 q22 -22 48 -20 M626 244 q30 -6 44 10"/>
+      </g>
+    </svg>
+    <div class="hero-in">
+      <div class="hero-kicker">Malaysia · Nanyang Guide</div>
+      <h1>马来西亚疯狂季</h1>
+      <div class="en">Penang — Ipoh — Kuala Lumpur — Redang</div>
+      <div class="hero-tags">
+        <span>槟城</span><span>怡保</span><span>吉隆坡</span><span>登嘉楼 · 热浪岛</span>
+      </div>
+      <div class="hero-date">09.12 — 24<small>13 天 · 12 晚</small></div>
+      <div class="hero-meta">
+        <div><span class="k">旅 行 路 线</span><span class="v">西马环线 · 四人小分队</span></div>
+        <div><span class="k">季 节 主 题</span><span class="v">夏末南洋 · 疯狂一夏</span></div>
+      </div>
+    </div>
   </div>
-
 </header>
 
 <nav class="jump" data-page-node-id="y2FKFNwln6gue6SS5UWvJe">
@@ -281,15 +313,15 @@
 
 <!-- 此刻关注 -->
 <section id="now" data-page-node-id="Vh41C3dvznkINwhHbNr7we">
-  <h2 class="sec hand" data-page-node-id="ovw3ipfOsx6Yd2iR2zOKOi">此刻关注</h2>
+  <h2 class="sec" data-page-node-id="ovw3ipfOsx6Yd2iR2zOKOi">此刻关注<small>Now &amp; Countdown</small></h2>
   <div class="card" data-page-node-id="icfMz9zBAiE20UNFkhPSM7">
     <div class="label" data-page-node-id="RRjmWDPeqDTrJbi5A77LY0">下一个行程事件</div>
     <div class="evt-title" id="evt-title" data-page-node-id="wkPAvFOhbw3mqheLkDMPPc">加载中…</div>
     <div class="evt-time" id="evt-time" data-page-node-id="dXfNKHs9lAitUIh0cPscE2"></div>
     <div class="count" data-page-node-id="x4VPP00kfISqaNPo7VAhAJ">
-      <div class="cell" data-page-node-id="CB85CVqxy0Lj2TtoWqJn4c"><div class="num" id="cd-d" data-page-node-id="Aw0XbeaC56jyB91GEpXstA">--</div><div class="unit" data-page-node-id="S8YkdeOXNIjMaMIjOnRwsF">天</div></div>
-      <div class="cell" data-page-node-id="ZsCfmSxJYZPVimDlipEtYV"><div class="num" id="cd-h" data-page-node-id="tBA9YE0NABS7FTTdW578kU">--</div><div class="unit" data-page-node-id="j1ZCeaCKqlKIe5JREyyiTE">时</div></div>
-      <div class="cell" data-page-node-id="GTGeAxIlnYC2z0yEnzFmn1"><div class="num" id="cd-m" data-page-node-id="sAOZmF0BI9ng2jWKgtULNx">--</div><div class="unit" data-page-node-id="nxDf1zOsWV9uB3vZJTLoKh">分</div></div>
+      <div class="cell" data-page-node-id="CB85CVqxy0Lj2TtoWqJn4c"><div class="num" id="cd-d" data-page-node-id="Aw0XbeaC56jyB91GEpXstA">--</div><div class="unit" data-page-node-id="S8YkdeOXNIjMaMIjOnRwsF">天</div></div><div class="sep">:</div>
+      <div class="cell" data-page-node-id="ZsCfmSxJYZPVimDlipEtYV"><div class="num" id="cd-h" data-page-node-id="tBA9YE0NABS7FTTdW578kU">--</div><div class="unit" data-page-node-id="j1ZCeaCKqlKIe5JREyyiTE">时</div></div><div class="sep">:</div>
+      <div class="cell" data-page-node-id="GTGeAxIlnYC2z0yEnzFmn1"><div class="num" id="cd-m" data-page-node-id="sAOZmF0BI9ng2jWKgtULNx">--</div><div class="unit" data-page-node-id="nxDf1zOsWV9uB3vZJTLoKh">分</div></div><div class="sep">:</div>
       <div class="cell" data-page-node-id="EM2mmEKOvA9BCbomobksLl"><div class="num" id="cd-s" data-page-node-id="eaX9OgqwbWhvdhWJecaKbZ">--</div><div class="unit" data-page-node-id="UQ5gCVC8vxY3UfncKW9fwU">秒</div></div>
     </div>
     <div class="clock" data-page-node-id="97plDSiM6WAWRW4IkFCXdb">马来西亚当地时间（UTC+8，与北京无时差）<b id="my-clock" data-page-node-id="hHfy33dXBcFG0ZGZrdsPB8">--:--:--</b></div>
@@ -298,7 +330,7 @@
 
 <!-- 总览地图 -->
 <section id="map" data-page-node-id="qN6RjwihZVTGkfQ3pU1HCb">
-  <h2 class="sec hand" data-page-node-id="rz1Jj0Pd7tk2RucTMR8f89">行程总览地图</h2>
+  <h2 class="sec" data-page-node-id="rz1Jj0Pd7tk2RucTMR8f89">行程总览地图<small>Route Overview</small></h2>
   <div class="card" data-page-node-id="q2ydrc3TVa5BqZxsW3TBrA">
     <svg viewBox="0 0 680 430" role="img" aria-label="马来西亚半岛行程地图" data-page-node-id="Yxth3JImVhclE591aJCeBM">
       <!-- 陆地 -->
@@ -370,7 +402,7 @@
 
 <!-- 预订信息 -->
 <section id="bookings" data-page-node-id="7MVAHdMqOfdejyv8rIoLZX">
-  <h2 class="sec hand" data-page-node-id="OnBP0qS8z4xmAjhmN2sr9r">已确认预订</h2>
+  <h2 class="sec" data-page-node-id="OnBP0qS8z4xmAjhmN2sr9r">已确认预订<small>Confirmed Bookings</small></h2>
 
   <div class="bk-grid">
     <div class="card bk">
@@ -473,13 +505,13 @@
 
 <!-- 逐日行程 -->
 <section id="days">
-  <h2 class="sec hand">逐日行程</h2>
+  <h2 class="sec">逐日行程<small>Day by Day</small></h2>
   <div id="days-list"></div>
 </section>
 
 <!-- 待办清单 -->
 <section id="todo">
-  <h2 class="sec hand">待办清单</h2>
+  <h2 class="sec">待办清单<small>To-do List</small></h2>
   <div class="card">
     <ol class="plain">
       <li>订吉隆坡酒店 2 晚：9/21、9/22（小赵、小陈 2 人）<small>　建议武吉免登或 KL Sentral 附近，去机场方便</small></li>
@@ -497,7 +529,7 @@
 
 <!-- 实用贴士 -->
 <section id="tips">
-  <h2 class="sec hand">实用贴士</h2>
+  <h2 class="sec">实用贴士<small>Travel Tips</small></h2>
   <div class="tips">
     <div class="card"><b class="tt">时间</b>　马来西亚全程 UTC+8，和北京没有时差。本页所有时间都是当地时间，倒计时按绝对时刻计算，在哪个时区打开都不会错。</div>
     <div class="card"><b class="tt">钱</b>　马币 RM，1 RM 约 1.7 元人民币。热浪岛两天建议每人备 300–400 RM 现金（尾款、保育费、码头费、装备租金、零食）；吉隆坡槟城怡保基本可以刷卡/扫码，但夜市要现金。</div>

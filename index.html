@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-page-node-id="Q3k0pYkHifQCit7637LWP9">
-<head data-page-node-id="MZx7D8pE3ffpHWFGwnRzxE">
+<html lang="zh-CN" data-page-node-id="Q3k0pYkHifQCit7637LWP9" data-dm-ref="1"><head data-page-node-id="MZx7D8pE3ffpHWFGwnRzxE">
 <meta charset="UTF-8" data-page-node-id="07d4uyU8vJLdK9mTf7WIet">
 <meta name="viewport" content="width=device-width, initial-scale=1" data-page-node-id="MID7xWDXIMGW6Yd8byubEd">
 <meta name="color-scheme" content="light dark" data-page-node-id="1BPlR3LHRwZ4VjJlaABGfh">
@@ -131,13 +130,33 @@
     box-shadow:0 18px 44px rgba(23,58,45,.12),
       inset 0 1.5px 1px rgba(255,255,255,.9),
       inset 0 -8px 18px rgba(255,244,206,.30),
-      inset 2px 0 10px rgba(255,255,255,.35);
+      inset 2px 0 10px rgba(255,255,255,.15);
   }
   .card::after{
     content:"";position:absolute;inset:0;border-radius:26px;pointer-events:none;
-    background:linear-gradient(115deg, rgba(255,255,255,.42) 0%, rgba(255,255,255,0) 24%, rgba(255,255,255,0) 72%, rgba(255,255,255,.16) 100%);
+    background:linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 22%, rgba(255,255,255,0) 74%, rgba(255,255,255,.14) 100%);
   }
   .card + .card{margin-top:14px}
+
+  /* 预订卡：浅暖黄灰（更浅、可读性优先，无流光白雾） */
+  .bk-grid .card{
+    background:linear-gradient(150deg,
+      rgba(249,247,240,.94) 0%,
+      rgba(244,241,229,.91) 50%,
+      rgba(238,233,217,.88) 100%);
+    border:1px solid rgba(158,146,110,.28);
+    box-shadow:0 12px 30px rgba(96,88,60,.09),
+      inset 0 1.5px 1px rgba(255,255,255,.9),
+      inset 0 -8px 18px rgba(214,206,176,.14);
+  }
+  .bk-grid .card::after{display:none}
+  @media (prefers-color-scheme: dark){
+    .bk-grid .card{
+      background:linear-gradient(150deg, rgba(54,51,41,.88) 0%, rgba(47,44,36,.85) 50%, rgba(41,39,32,.83) 100%);
+      border-color:rgba(180,168,126,.24);
+      box-shadow:0 12px 30px rgba(0,0,0,.45), inset 0 1.5px 1px rgba(255,255,255,.18);
+    }
+  }
 
   /* 此刻关注 */
   #now .card{text-align:center;padding:26px 22px}
@@ -301,6 +320,36 @@
   .tips .card b.tt{font-family:var(--serif);color:var(--accent);letter-spacing:1px}
   footer{margin-top:52px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px;padding:0 20px}
   footer::before{content:"❦";display:block;color:var(--gold);font-size:14px;margin-bottom:8px}
+  @media (max-width:433px){
+    .wrap{padding:0 12px}
+    body{overflow-x:hidden}
+    .card{padding:15px 15px}
+    .bk{padding:15px}
+    .bk h3{font-size:14.5px;letter-spacing:0}
+    .bk h3 .tag{font-size:10px;padding:2px 9px;letter-spacing:.5px}
+    .bk .row{font-size:13px;line-height:1.6;margin-top:4px}
+    .bk .row .k{margin-right:6px}
+    .bk .acts{margin-top:9px;gap:7px}
+    .bk .acts a{padding:3px 12px;font-size:11.5px}
+    .day > .head{padding:14px 14px 10px;gap:7px}
+    .day .date{font-size:15px}
+    .day .ttl{font-size:14.5px}
+    .day ol{padding:0 14px 6px}
+    .day ol li{gap:10px;padding:8px 0}
+    .day .t{flex-basis:52px;font-size:12.5px}
+    .day .c{font-size:13.5px}
+    .day .c small{font-size:12px}
+    .day .badge{display:inline-block !important;white-space:nowrap;vertical-align:2px;line-height:1.5;padding:1px 9px}
+    .day .badge{display:inline-block !important;white-space:nowrap;vertical-align:2px;line-height:1.5;padding:1px 9px}
+    details.daymap{padding:8px 14px 13px}
+    .tips .card{padding:13px 15px;font-size:13.5px}
+    .plain li{font-size:13.5px;padding:10px 3px 10px 38px}
+    #now .card{padding:20px 14px}
+    .count .cell{min-width:56px}
+    .count .num{font-size:32px}
+    .count .sep{font-size:20px;padding-bottom:14px}
+    #now .evt-title{font-size:17px}
+  }
   @media (max-width:520px){
     .hero-in{padding:26px 22px 24px}
     .hero h1{font-size:32px;letter-spacing:4px}
@@ -311,65 +360,65 @@
     .day .t{flex-basis:58px;font-size:13px}
   }
 </style>
-</head>
-<body data-page-node-id="LukPDy45HuXA70t07Q2wwl">
+<style id="__dm_no_drag_style__">* { -webkit-user-drag: none !important; }</style><style id="__dm_bindable_badge_style__">[data-sp-bindable="database"]{outline:1px dashed #0088ff;outline-offset:2px;border-radius:4px;}[data-sp-bindable="database"] *{pointer-events:none !important;transition:none !important;animation:none !important;}[data-sp-bindable="database"]{transition:none !important;animation:none !important;}</style></head>
+<body data-page-node-id="LukPDy45HuXA70t07Q2wwl" style="position: relative;">
 
-<header class="wrap">
-  <div class="hero">
-    <svg class="art" viewBox="0 0 720 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <pattern id="tile" width="52" height="52" patternUnits="userSpaceOnUse">
-          <circle cx="26" cy="26" r="3.2" fill="none" stroke="#e8dfc2" stroke-width="1"/>
-          <path d="M26 10 q6 6 0 12 q-6 -6 0 -12 Z M26 56 q6 -6 0 -12 q-6 6 0 12 Z M10 26 q6 -6 12 0 q-6 6 -12 0 Z M42 26 q-6 -6 -12 0 q6 6 12 0 Z" fill="none" stroke="#e8dfc2" stroke-width="0.8"/>
+<header class="wrap" data-page-node-id="9bIzdqAc2seUBq7zvRAHWR">
+  <div class="hero" data-page-node-id="aBoqWgPZSYg4lbbX9IkD2N">
+    <svg class="art" viewBox="0 0 720 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true" data-page-node-id="dihGHglMMRYHU4DjFhsJDo">
+      <defs data-page-node-id="CdAwJuTh2YkGtY2VX3K1k7">
+        <pattern id="tile" width="52" height="52" patternUnits="userSpaceOnUse" data-page-node-id="IKIAlVbb8WN7gZGtiIkJKW">
+          <circle cx="26" cy="26" r="3.2" fill="none" stroke="#e8dfc2" stroke-width="1" data-page-node-id="cIlro2rj6B0nEeTnQVFxKb"></circle>
+          <path d="M26 10 q6 6 0 12 q-6 -6 0 -12 Z M26 56 q6 -6 0 -12 q-6 6 0 12 Z M10 26 q6 -6 12 0 q-6 6 -12 0 Z M42 26 q-6 -6 -12 0 q6 6 12 0 Z" fill="none" stroke="#e8dfc2" stroke-width="0.8" data-page-node-id="2JCi5hLEVG1OLJKjyVfWls"></path>
         </pattern>
       </defs>
       <!-- 娘惹花砖底纹 -->
-      <rect x="0" y="0" width="720" height="380" fill="url(#tile)" opacity="0.08"/>
+      <rect x="0" y="0" width="720" height="380" fill="url(#tile)" opacity="0.08" data-page-node-id="sFd6tkgXYngA4FgmErCkpm"></rect>
       <!-- 三轮车队列（南洋剪影） -->
-      <g stroke="#e8dfc2" fill="none" stroke-width="1.4" opacity="0.20" stroke-linecap="round">
-        <g transform="translate(430,268) scale(1.15)">
-          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z"/>
-          <circle cx="22" cy="46" r="7"/><circle cx="78" cy="46" r="7"/>
-          <path d="M50 30 q0 -8 8 -8 l16 0"/>
-          <path d="M96 44 l22 -18 6 2"/>
-          <path d="M104 44 l16 -13"/>
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.4" opacity="0.20" stroke-linecap="round" data-page-node-id="iVSqjpoIZAWQcXiwWfz1kV">
+        <g transform="translate(430,268) scale(1.15)" data-page-node-id="ygmJKWCvInEZAXH0w7l24y">
+          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z" data-page-node-id="GI4btExxysmC0lrdNumFEl"></path>
+          <circle cx="22" cy="46" r="7" data-page-node-id="z2dkOmaCUg7yGksNhj0hU8"></circle><circle cx="78" cy="46" r="7" data-page-node-id="PdEjSGHzNQgspvyrVSoDD4"></circle>
+          <path d="M50 30 q0 -8 8 -8 l16 0" data-page-node-id="fCNOPR0A0JgUHf2TdSNy9y"></path>
+          <path d="M96 44 l22 -18 6 2" data-page-node-id="yY6AZP9SrRGvsyBAisxtHn"></path>
+          <path d="M104 44 l16 -13" data-page-node-id="EHEHCAqerMlR42PvpUU3zR"></path>
         </g>
-        <g transform="translate(560,278) scale(0.8)">
-          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z"/>
-          <circle cx="22" cy="46" r="7"/><circle cx="78" cy="46" r="7"/>
-          <path d="M50 30 q0 -8 8 -8 l16 0"/>
-          <path d="M96 44 l22 -18 6 2"/>
+        <g transform="translate(560,278) scale(0.8)" data-page-node-id="gJCxjciRIJt8C7Upz9CyM8">
+          <path d="M4 44 q0 -14 16 -14 l38 0 q22 0 30 12 l6 10 -90 0 Z" data-page-node-id="U5gahBfU1FAvXri8I3JXGX"></path>
+          <circle cx="22" cy="46" r="7" data-page-node-id="dZO8FD1W0NjApJ3sPworgj"></circle><circle cx="78" cy="46" r="7" data-page-node-id="VSaG1WEBLjYBY8y05Z5GFF"></circle>
+          <path d="M50 30 q0 -8 8 -8 l16 0" data-page-node-id="go377r7eReNM8lOWDMP2LW"></path>
+          <path d="M96 44 l22 -18 6 2" data-page-node-id="sJU1cP4Rukl9MjXFfdSyyN"></path>
         </g>
       </g>
       <!-- 骑楼屋顶天际线 -->
-      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16">
-        <path d="M0 330 l0 -26 40 0 0 -10 14 0 0 10 46 0 0 -26 12 -8 12 8 0 26 52 0 0 -16 30 0 0 16 40 0 0 -30 14 -10 14 10 0 30 48 0 0 -20 34 0 0 20 44 0 0 -26 40 0"/>
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16" data-page-node-id="8LKlhC4WBFG7kh04CwVlNS">
+        <path d="M0 330 l0 -26 40 0 0 -10 14 0 0 10 46 0 0 -26 12 -8 12 8 0 26 52 0 0 -16 30 0 0 16 40 0 0 -30 14 -10 14 10 0 30 48 0 0 -20 34 0 0 20 44 0 0 -26 40 0" data-page-node-id="ayqWJH4B71OpECmJnyfUWW"></path>
       </g>
       <!-- 朱槿（大红花，马来西亚国花） -->
-      <g transform="translate(96,236)" stroke="#e8dfc2" fill="none" stroke-width="1.3" opacity="0.22">
-        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z"/>
-        <path d="M16 -22 q6 10 16 12"/>
-        <circle cx="14" cy="-20" r="2.5"/>
+      <g transform="translate(96,236)" stroke="#e8dfc2" fill="none" stroke-width="1.3" opacity="0.22" data-page-node-id="mJK6tD9HYGl2xMQhR2G6EU">
+        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z" data-page-node-id="FhpviZS6bVHxCSsBXKAFZk"></path>
+        <path d="M16 -22 q6 10 16 12" data-page-node-id="FBti8CzP7onD3TSX5XQTPD"></path>
+        <circle cx="14" cy="-20" r="2.5" data-page-node-id="3ekFWtJuCia9mZ0afd2P78"></circle>
       </g>
-      <g transform="translate(180,300) scale(0.6)" stroke="#e8dfc2" fill="none" stroke-width="1.5" opacity="0.14">
-        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z"/>
+      <g transform="translate(180,300) scale(0.6)" stroke="#e8dfc2" fill="none" stroke-width="1.5" opacity="0.14" data-page-node-id="gGQyKPUgpaomEK0gemxmoC">
+        <path d="M0 0 q-14 -10 -10 -28 q2 -10 12 -12 q-8 -12 4 -22 q12 -8 22 0 q14 -6 20 8 q4 12 -6 20 q8 10 -2 22 q-12 10 -24 4 q-10 8 -16 8 Z" data-page-node-id="LZ6g9PYMa8SKd3DOd6RmKf"></path>
       </g>
       <!-- 槟榔/椰树线条 -->
-      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16" stroke-linecap="round">
-        <path d="M640 340 q-2 -60 -14 -96 M626 244 q-26 -18 -52 -14 M626 244 q-4 -28 -20 -40 M626 244 q22 -22 48 -20 M626 244 q30 -6 44 10"/>
+      <g stroke="#e8dfc2" fill="none" stroke-width="1.2" opacity="0.16" stroke-linecap="round" data-page-node-id="1UxhelzicICJn1nThVqyTi">
+        <path d="M640 340 q-2 -60 -14 -96 M626 244 q-26 -18 -52 -14 M626 244 q-4 -28 -20 -40 M626 244 q22 -22 48 -20 M626 244 q30 -6 44 10" data-page-node-id="xlrG8jSgpLrlcwCzC5Didx"></path>
       </g>
     </svg>
-    <div class="hero-in">
-      <div class="hero-kicker">Malaysia · Nanyang Guide</div>
-      <h1>马来西亚疯狂季</h1>
-      <div class="en">Penang — Ipoh — Kuala Lumpur — Redang</div>
-      <div class="hero-tags">
-        <span>槟城</span><span>怡保</span><span>吉隆坡</span><span>登嘉楼 · 热浪岛</span>
+    <div class="hero-in" data-page-node-id="P8ZZwHe4o1DqCqIGzYmiKJ">
+      <div class="hero-kicker" data-page-node-id="APAOHriJooqy8EKEwvkeAH">Malaysia · Nanyang Guide</div>
+      <h1 data-page-node-id="V1Vwt3aDrmpQ6Gc5q85FSg">马来西亚疯狂季</h1>
+      <div class="en" data-page-node-id="GrLW0f62FM3YbnNh00RihN">Penang — Ipoh — Kuala Lumpur — Redang</div>
+      <div class="hero-tags" data-page-node-id="NPhJAUoKBBulqmK4IumBnV">
+        <span data-page-node-id="4EsZJtIOVd3SDF6JKGLbpN">槟城</span><span data-page-node-id="wDxjTtoD2HCIAlgCu9yCQc">怡保</span><span data-page-node-id="0GBCKGsyo858uNkOpLXtl8">吉隆坡</span><span data-page-node-id="dFc6PrBNdCFqR2Wpwo74Ds">登嘉楼 · 热浪岛</span>
       </div>
-      <div class="hero-date">09.12 — 24<small>13 天 · 12 晚</small></div>
-      <div class="hero-meta">
-        <div><span class="k">旅 行 路 线</span><span class="v">西马环线 · 四人小分队</span></div>
-        <div><span class="k">季 节 主 题</span><span class="v">夏末南洋 · 疯狂一夏</span></div>
+      <div class="hero-date" data-page-node-id="NI6Q4cxNOGzN6XChNe3Qes" style="">09.12—24<small data-page-node-id="CVPdNQ0PKB8DIIvWcwEz7r">13 天 · 12 晚</small></div>
+      <div class="hero-meta" data-page-node-id="n9BUOeBVWCw0mFz5wN9kmj">
+        <div data-page-node-id="9ml3kBab7f9sNLjaRvMLp4"><span class="k" data-page-node-id="alaaGSrTbysRGAnDywvap3">旅 行 路 线</span><span class="v" data-page-node-id="6KXPhSrKwpVrTDjfvOGDlO">西马环线 · 四人小分队</span></div>
+        <div data-page-node-id="1aPJGMfrtLygoxe4iA4cYE"><span class="k" data-page-node-id="dO8h7O4U8A4sAnERDs007N">季 节 主 题</span><span class="v" data-page-node-id="GA8KBZflXZm71VoGpdmDsz">夏末南洋 · 疯狂一夏</span></div>
       </div>
     </div>
   </div>
@@ -388,55 +437,52 @@
 
 <!-- 此刻关注 -->
 <section id="now" data-page-node-id="Vh41C3dvznkINwhHbNr7we">
-  <h2 class="sec" data-page-node-id="ovw3ipfOsx6Yd2iR2zOKOi">此刻关注<small>Now &amp; Countdown</small></h2>
+  <h2 class="sec" data-page-node-id="ovw3ipfOsx6Yd2iR2zOKOi">此刻关注<small data-page-node-id="rrdPk9jifzROuZMa7p3vzU">Now &amp; Countdown</small></h2>
   <div class="card" data-page-node-id="icfMz9zBAiE20UNFkhPSM7">
-    <div class="label" data-page-node-id="RRjmWDPeqDTrJbi5A77LY0">下一个行程事件</div>
-    <div class="evt-title" id="evt-title" data-page-node-id="wkPAvFOhbw3mqheLkDMPPc">加载中…</div>
-    <div class="evt-time" id="evt-time" data-page-node-id="dXfNKHs9lAitUIh0cPscE2"></div>
+    
+    <div class="label" data-page-node-id="RRjmWDPeqDTrJbi5A77LY0">下一个行程事件</div><div class="evt-title" id="evt-title" data-page-node-id="wkPAvFOhbw3mqheLkDMPPc" style="">成都天府机场集合 · 值机</div>
+    <div class="evt-time" id="evt-time" data-page-node-id="dXfNKHs9lAitUIh0cPscE2" style="">9月12日 17:00 · 3U3911 20:05 起飞</div>
     <div class="count" data-page-node-id="x4VPP00kfISqaNPo7VAhAJ">
-      <div class="cell" data-page-node-id="CB85CVqxy0Lj2TtoWqJn4c"><div class="num" id="cd-d" data-page-node-id="Aw0XbeaC56jyB91GEpXstA">--</div><div class="unit" data-page-node-id="S8YkdeOXNIjMaMIjOnRwsF">天</div></div><div class="sep">:</div>
-      <div class="cell" data-page-node-id="ZsCfmSxJYZPVimDlipEtYV"><div class="num" id="cd-h" data-page-node-id="tBA9YE0NABS7FTTdW578kU">--</div><div class="unit" data-page-node-id="j1ZCeaCKqlKIe5JREyyiTE">时</div></div><div class="sep">:</div>
-      <div class="cell" data-page-node-id="GTGeAxIlnYC2z0yEnzFmn1"><div class="num" id="cd-m" data-page-node-id="sAOZmF0BI9ng2jWKgtULNx">--</div><div class="unit" data-page-node-id="nxDf1zOsWV9uB3vZJTLoKh">分</div></div><div class="sep">:</div>
-      <div class="cell" data-page-node-id="EM2mmEKOvA9BCbomobksLl"><div class="num" id="cd-s" data-page-node-id="eaX9OgqwbWhvdhWJecaKbZ">--</div><div class="unit" data-page-node-id="UQ5gCVC8vxY3UfncKW9fwU">秒</div></div>
+      <div class="cell" data-page-node-id="CB85CVqxy0Lj2TtoWqJn4c"><div class="num" id="cd-d" data-page-node-id="Aw0XbeaC56jyB91GEpXstA">1</div><div class="unit" data-page-node-id="S8YkdeOXNIjMaMIjOnRwsF">天</div></div><div class="sep" data-page-node-id="63pfEXRCGbnIppSn6ZqOaO">:</div>
+      <div class="cell" data-page-node-id="ZsCfmSxJYZPVimDlipEtYV"><div class="num" id="cd-h" data-page-node-id="tBA9YE0NABS7FTTdW578kU">16</div><div class="unit" data-page-node-id="j1ZCeaCKqlKIe5JREyyiTE">时</div></div><div class="sep" data-page-node-id="1XZxGVtGZ0hHCnzlFy7n3W">:</div>
+      <div class="cell" data-page-node-id="GTGeAxIlnYC2z0yEnzFmn1"><div class="num" id="cd-m" data-page-node-id="sAOZmF0BI9ng2jWKgtULNx">09</div><div class="unit" data-page-node-id="nxDf1zOsWV9uB3vZJTLoKh">分</div></div><div class="sep" data-page-node-id="o7mahMYTJ8HkBrZzlqQyZx">:</div>
+      <div class="cell" data-page-node-id="EM2mmEKOvA9BCbomobksLl"><div class="num" id="cd-s" data-page-node-id="eaX9OgqwbWhvdhWJecaKbZ">12</div><div class="unit" data-page-node-id="UQ5gCVC8vxY3UfncKW9fwU">秒</div></div>
     </div>
-    <div class="clock" data-page-node-id="97plDSiM6WAWRW4IkFCXdb">马来西亚当地时间（UTC+8，与北京无时差）<b id="my-clock" data-page-node-id="hHfy33dXBcFG0ZGZrdsPB8">--:--:--</b></div>
+    <div class="clock" data-page-node-id="97plDSiM6WAWRW4IkFCXdb">马来西亚当地时间（UTC+8，与北京无时差）<b id="my-clock" data-page-node-id="hHfy33dXBcFG0ZGZrdsPB8">00:50:47</b></div>
   </div>
 </section>
 
 <!-- 总览地图 -->
 <section id="map" data-page-node-id="qN6RjwihZVTGkfQ3pU1HCb">
-  <h2 class="sec" data-page-node-id="rz1Jj0Pd7tk2RucTMR8f89">行程总览地图<small>Route Overview</small></h2>
+  <h2 class="sec" data-page-node-id="rz1Jj0Pd7tk2RucTMR8f89">行程总览地图<small data-page-node-id="xZqEao7qIjyYQUI15GarLO">Route Overview</small></h2>
   <div class="card" data-page-node-id="q2ydrc3TVa5BqZxsW3TBrA">
     <svg viewBox="0 0 680 430" role="img" aria-label="马来西亚半岛行程地图" data-page-node-id="Yxth3JImVhclE591aJCeBM">
       <!-- 陆地 -->
-      <path d="M 70,-10 C 96,28 118,62 140,104 C 168,162 202,224 234,282 C 254,322 274,368 296,428 L 306,440 C 330,412 352,368 372,318 C 396,258 420,206 446,164 C 468,128 486,92 496,52 C 501,30 505,10 508,-10 Z"
-            fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2.5" stroke-linejoin="round" data-page-node-id="AEbhEhu661VSvz5GG1mwHR"/>
+      <path d="M 70,-10 C 96,28 118,62 140,104 C 168,162 202,224 234,282 C 254,322 274,368 296,428 L 306,440 C 330,412 352,368 372,318 C 396,258 420,206 446,164 C 468,128 486,92 496,52 C 501,30 505,10 508,-10 Z" fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2.5" stroke-linejoin="round" data-page-node-id="AEbhEhu661VSvz5GG1mwHR"></path>
       <!-- 槟城岛 -->
-      <path d="M 92,66 C 100,60 112,62 116,70 C 119,78 112,86 102,86 C 93,86 87,73 92,66 Z"
-            fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2" data-page-node-id="Wb8hXV5i3WodNVjKacevD1"/>
+      <path d="M 92,66 C 100,60 112,62 116,70 C 119,78 112,86 102,86 C 93,86 87,73 92,66 Z" fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2" data-page-node-id="Wb8hXV5i3WodNVjKacevD1"></path>
       <!-- 热浪岛 -->
-      <path d="M 538,110 C 548,102 562,106 565,116 C 568,126 558,133 546,130 C 536,128 532,116 538,110 Z"
-            fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2" data-page-node-id="Ro3MDv8mfTNkXDiqCdFtnI"/>
+      <path d="M 538,110 C 548,102 562,106 565,116 C 568,126 558,133 546,130 C 536,128 532,116 538,110 Z" fill="var(--map-land)" stroke="var(--map-ink)" stroke-width="2" data-page-node-id="Ro3MDv8mfTNkXDiqCdFtnI"></path>
 
       <!-- 9/16 槟城→怡保 -->
-      <path d="M 116,76 C 140,96 175,124 210,146" fill="none" stroke="var(--c1)" stroke-width="3.5" stroke-linecap="round" data-page-node-id="Zam5Sau6j3NS6xyLBIZmMo"/>
+      <path d="M 116,76 C 140,96 175,124 210,146" fill="none" stroke="var(--c1)" stroke-width="3.5" stroke-linecap="round" data-page-node-id="Zam5Sau6j3NS6xyLBIZmMo"></path>
       <!-- 9/17 怡保→吉隆坡 -->
-      <path d="M 216,156 C 232,202 250,252 266,292" fill="none" stroke="var(--c2)" stroke-width="3.5" stroke-linecap="round" data-page-node-id="NuDBZ3uE3spchRgqGX2x4C"/>
+      <path d="M 216,156 C 232,202 250,252 266,292" fill="none" stroke="var(--c2)" stroke-width="3.5" stroke-linecap="round" data-page-node-id="NuDBZ3uE3spchRgqGX2x4C"></path>
       <!-- 9/18 吉隆坡✈瓜登 -->
-      <path d="M 274,286 C 336,196 402,156 458,158" fill="none" stroke="var(--c3)" stroke-width="3" stroke-dasharray="7 8" stroke-linecap="round" data-page-node-id="DQmJSTJrpbFFHVlSbFwt4s"/>
+      <path d="M 274,286 C 336,196 402,156 458,158" fill="none" stroke="var(--c3)" stroke-width="3" stroke-dasharray="7 8" stroke-linecap="round" data-page-node-id="DQmJSTJrpbFFHVlSbFwt4s"></path>
       <!-- 9/19 瓜登→热浪岛 -->
-      <path d="M 470,156 C 496,140 520,128 538,122" fill="none" stroke="var(--c4)" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" data-page-node-id="oCw957aRl6475cUSLPWG4m"/>
+      <path d="M 470,156 C 496,140 520,128 538,122" fill="none" stroke="var(--c4)" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" data-page-node-id="oCw957aRl6475cUSLPWG4m"></path>
       <!-- 9/21 热浪岛→瓜登→吉隆坡 -->
-      <path d="M 534,130 C 512,142 492,152 474,162" fill="none" stroke="var(--c5)" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" data-page-node-id="0VDb9bGxS4MFDn40QDXmQb"/>
-      <path d="M 464,170 C 404,246 336,284 280,298" fill="none" stroke="var(--c5)" stroke-width="3" stroke-dasharray="7 8" stroke-linecap="round" data-page-node-id="neBznacTEZDQoS536WEOwN"/>
+      <path d="M 534,130 C 512,142 492,152 474,162" fill="none" stroke="var(--c5)" stroke-width="3.5" stroke-dasharray="2 7" stroke-linecap="round" data-page-node-id="0VDb9bGxS4MFDn40QDXmQb"></path>
+      <path d="M 464,170 C 404,246 336,284 280,298" fill="none" stroke="var(--c5)" stroke-width="3" stroke-dasharray="7 8" stroke-linecap="round" data-page-node-id="neBznacTEZDQoS536WEOwN"></path>
 
       <!-- 城市节点 -->
       <g stroke="var(--paper)" stroke-width="2.5" data-page-node-id="X7qhkKdIkQqiZqR2PT9i05">
-        <circle cx="112" cy="76" r="8" fill="var(--c1)" data-page-node-id="DOLffdtYFm5LuismoiazYh"/>
-        <circle cx="215" cy="150" r="8" fill="var(--c2)" data-page-node-id="25BVDz5vpl8svz0GMOtqIu"/>
-        <circle cx="268" cy="295" r="8" fill="var(--c3)" data-page-node-id="BHgYoXCWKXUp42nQ0GfEHP"/>
-        <circle cx="468" cy="162" r="8" fill="var(--c4)" data-page-node-id="Inrd3MTanhAXYC5sqCFSpb"/>
-        <circle cx="545" cy="121" r="8" fill="var(--c5)" data-page-node-id="5FCpKv70oTZBkEyOQwnTvO"/>
+        <circle cx="112" cy="76" r="8" fill="var(--c1)" data-page-node-id="DOLffdtYFm5LuismoiazYh"></circle>
+        <circle cx="215" cy="150" r="8" fill="var(--c2)" data-page-node-id="25BVDz5vpl8svz0GMOtqIu"></circle>
+        <circle cx="268" cy="295" r="8" fill="var(--c3)" data-page-node-id="BHgYoXCWKXUp42nQ0GfEHP"></circle>
+        <circle cx="468" cy="162" r="8" fill="var(--c4)" data-page-node-id="Inrd3MTanhAXYC5sqCFSpb"></circle>
+        <circle cx="545" cy="121" r="8" fill="var(--c5)" data-page-node-id="5FCpKv70oTZBkEyOQwnTvO"></circle>
       </g>
 
       <!-- 城市名 -->
@@ -477,154 +523,154 @@
 
 <!-- 预订信息 -->
 <section id="bookings" data-page-node-id="7MVAHdMqOfdejyv8rIoLZX">
-  <h2 class="sec" data-page-node-id="OnBP0qS8z4xmAjhmN2sr9r">已确认预订<small>Confirmed Bookings</small></h2>
+  <h2 class="sec" data-page-node-id="OnBP0qS8z4xmAjhmN2sr9r">已确认预订<small data-page-node-id="W9EjY2pkJPFkSAKzfKDJYY">Confirmed Bookings</small></h2>
 
-  <div class="bk-grid">
-    <div class="card bk">
-      <h3>9/12（六）四川航空 3U3911 <span class="tag">机票 · 全员</span></h3>
-      <div class="row"><span class="k">时间</span>20:05 成都天府 T1 → 00:05(+1) 槟城国际机场</div>
-      <div class="row"><span class="k">备注</span>国际航班，建议 17:00 前到机场</div>
+  <div class="bk-grid" data-page-node-id="JvjOkplrAecH3Xi4Ain5sz">
+    <div class="card bk" data-page-node-id="iqBwW6VSBEdUAC6dyl5CSH">
+      <h3 data-page-node-id="nQXFiwDlpryumnxEVRpKi5" style="font-weight: 700; font-style: normal; font-size: 18px;">9/12（六）四川航空 3U3911 <span class="tag" data-page-node-id="tnLsrMNOBQdFmzf7CGCD9f">机票 · 全员</span></h3>
+      <div class="row" data-page-node-id="u1FD0ZB3NfMqpvKN6pZr7T"><span class="k" data-page-node-id="xQZGfltdbXmlecFgpsiCLD">时间</span>20:05 成都天府 T1 → 00:05(+1) 槟城国际机场</div>
+      <div class="row" data-page-node-id="0eESDIWH9s5IJXKMEaEhJz"><span class="k" data-page-node-id="fmYpW6rlnj1PQEPczPrZEx">备注</span>国际航班，建议 17:00 前到机场</div>
     </div>
-    <div class="card bk">
-      <h3>9/12–9/16 槟城万怡酒店 Courtyard Penang <span class="tag">酒店 · 全员</span></h3>
-      <div class="row"><span class="k">时间</span>9/12 15:00 后入住 · 9/16 12:00 前退房（4 晚 · 2 间双床 · 不含早）</div>
-      <div class="row"><span class="k">地址</span>218D, Jln Macalister, 10400 George Town, Penang</div>
-      <div class="row"><span class="k">费用</span>到店另付 MYR 104：旅游税 RM10/房/晚 + 文化遗产税 RM3/房/晚，共 8 个房晚（4晚×2间）</div>
-      <div class="acts">
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister">导航</a>
-        <a class="tel" href="tel:+6042972300">电话 +60 4-297 2300</a>
+    <div class="card bk" data-page-node-id="RDxxmSAAcBp5nWIrNV8Ir7">
+      <h3 data-page-node-id="miHdLBm33oPpO5qLAxBGun" style="font-size: 16px;">9/12–9/16 槟城万怡酒店 Courtyard Penang <span class="tag" data-page-node-id="uHH9axDGNENzJL0sSjCD7x">酒店 · 全员</span></h3>
+      <div class="row" data-page-node-id="NYOQEVjiKw7MQ0FydfXOnA"><span class="k" data-page-node-id="4nldFKqTtowyaSDfetqqCQ">时间</span>9/12 15:00 后入住 · 9/16 12:00 前退房（4 晚 · 2 间双床 · 不含早）</div>
+      <div class="row" data-page-node-id="nAawHiY2N8a5hYR8CrS9eb"><span class="k" data-page-node-id="b630ZlIGLbe7qUptPVsdwA">地址</span>218D, Jln Macalister, 10400 George Town, Penang</div>
+      <div class="row" data-page-node-id="3IWuzf8bC2NVPsIzgyAAVN"><span class="k" data-page-node-id="jLMwFzcDlnFlZB5wwovfew">费用</span>到店另付 MYR 104：旅游税 RM10/房/晚 + 文化遗产税 RM3/房/晚，共 8 个房晚（4晚×2间）</div>
+      <div class="acts" data-page-node-id="oEZ8vmSyAZWGE1HOdLdOt0">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister" data-page-node-id="zQBYzhCrAwABb74ePeun9S">导航</a>
+        <a class="tel" href="tel:+6042972300" data-page-node-id="N7Xtm5zKDr5cn5bvwL6txk">电话 +60 4-297 2300</a>
       </div>
     </div>
-    <div class="card bk">
-      <h3>9/16（三）上午 包车：槟城 → 怡保 <span class="tag">包车 · 全员</span></h3>
-      <div class="row"><span class="k">安排</span>08:30 退房出发，车程约 2 小时，全员</div>
-      <div class="row"><span class="k">提醒</span>当天是马来西亚日公共假期，热门餐厅人很多</div>
+    <div class="card bk" data-page-node-id="46hUPHwYibjmCBzoj55bS2">
+      <h3 data-page-node-id="TKc5scze407v06pB2J0rCs">9/16（三）上午 包车：槟城 → 怡保 <span class="tag" data-page-node-id="qkjZ8fsAzsVcOuLlf6Gk2X">包车 · 全员</span></h3>
+      <div class="row" data-page-node-id="4j3UBYrzTUqqAs8UCrGekz"><span class="k" data-page-node-id="A2GDE13Ohl8xhlXLHTMskq">安排</span>08:30 退房出发，车程约 2 小时，全员</div>
+      <div class="row" data-page-node-id="NmJqGkfBNRkRlhDdMfH09j"><span class="k" data-page-node-id="qQ0pn79DfW2S4xlDSu1fyv">提醒</span>当天是马来西亚日公共假期，热门餐厅人很多</div>
     </div>
-    <div class="card bk">
-      <h3>9/16–9/17 怡保 AC Hotel by Marriott Ipoh <span class="tag">酒店 · 全员</span></h3>
-      <div class="row"><span class="k">时间</span>9/16 15:00 后入住 · 9/17 12:00 前退房（1 晚 · 2 间）</div>
-      <div class="row"><span class="k">地址</span>88, Jalan Sultan Abdul Jalil, Greentown, 31350 Ipoh</div>
-      <div class="row"><span class="k">费用</span>房费已含旅游税；到店另付城市税 RM6/间/晚（2 间 1 晚共 RM12）</div>
-      <div class="row"><span class="k">提示</span>禁带榴莲、山竹进酒店</div>
-      <div class="acts">
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=AC%20Hotel%20by%20Marriott%20Ipoh">导航</a>
-        <a class="tel" href="tel:+60187958000">电话 +60 18-795 8000</a>
+    <div class="card bk" data-page-node-id="xIDGXNg9D9LuMeOR7jSewT">
+      <h3 data-page-node-id="oqXJB4X3nOZJNhiCB0EP2W">9/16–9/17 怡保 AC Hotel by Marriott Ipoh <span class="tag" data-page-node-id="RtcW0KLThIKCM6Oq61dBMt">酒店 · 全员</span></h3>
+      <div class="row" data-page-node-id="LFFbPkImAQF4ID35sYGYBv"><span class="k" data-page-node-id="fRgX2M2uMYkOsquCLi1pDG">时间</span>9/16 15:00 后入住 · 9/17 12:00 前退房（1 晚 · 2 间）</div>
+      <div class="row" data-page-node-id="MOgWcRAkRPwH6XRZejf0dl"><span class="k" data-page-node-id="zzy2mqkvkrqTjjupTraQUc">地址</span>88, Jalan Sultan Abdul Jalil, Greentown, 31350 Ipoh</div>
+      <div class="row" data-page-node-id="Y1hGMsN2YqG7usVyZyNFYt"><span class="k" data-page-node-id="Hn3DYuNCoYduVvB7EgVBgn">费用</span>房费已含旅游税；到店另付城市税 RM6/间/晚（2 间 1 晚共 RM12）</div>
+      <div class="row" data-page-node-id="0dhB27mNG6vlyFGkW06CsN"><span class="k" data-page-node-id="IzSkrQpeuDuSQErErxNARL">提示</span>禁带榴莲、山竹进酒店</div>
+      <div class="acts" data-page-node-id="NWnYGuQrowvNXxcZFchAMY">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=AC%20Hotel%20by%20Marriott%20Ipoh" data-page-node-id="5gtFZZukA1d3M3dvzsFpIk">导航</a>
+        <a class="tel" href="tel:+60187958000" data-page-node-id="TfN5T1ssFZKKJyyriSEDE4">电话 +60 18-795 8000</a>
       </div>
     </div>
-    <div class="card bk">
-      <h3>9/17（四）下午 包车：怡保 → 吉隆坡 <span class="tag">包车 · 全员</span></h3>
-      <div class="row"><span class="k">安排</span>13:30 出发，车程约 2.5–3 小时，全员</div>
+    <div class="card bk" data-page-node-id="yn3xBE8yuPltEx9mS3z0Vi">
+      <h3 data-page-node-id="oXZslKBEP6606S162GxPTB">9/17（四）下午 包车：怡保 → 吉隆坡 <span class="tag" data-page-node-id="2axiG6maq5x9wSTn4052fs">包车 · 全员</span></h3>
+      <div class="row" data-page-node-id="A51962LRhxO3q5mvhBYFJV"><span class="k" data-page-node-id="oPfvePeF5H5wdT62wEWegF">安排</span>13:30 出发，车程约 2.5–3 小时，全员</div>
     </div>
-    <div class="card bk">
-      <h3>9/17–9/18 吉隆坡美利亚酒店 Meliá Kuala Lumpur <span class="tag">酒店 · 全员</span></h3>
-      <div class="row"><span class="k">时间</span>9/17 15:00 后入住 · 9/18 12:00 前退房（1 晚 · 2 间）</div>
-      <div class="row"><span class="k">地址</span>16, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</div>
-      <div class="row"><span class="k">费用</span>房费已含旅游税；到店需交押金（现金或信用卡均可）</div>
-      <div class="row"><span class="k">提示</span>对面就是 Imbi 单轨站；去 KLIA 两座航站楼都约 1 小时</div>
-      <div class="acts">
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Melia%20Kuala%20Lumpur%20Jalan%20Imbi">导航</a>
-        <a class="tel" href="tel:+60327852828">电话 +60 3-2785 2828</a>
+    <div class="card bk" data-page-node-id="DFzFlkHqMNE4mrHvHv47dF">
+      <h3 data-page-node-id="06uTP2Kr3uXy9lrH5nTpnj">9/17–9/18 吉隆坡美利亚酒店 Meliá Kuala Lumpur <span class="tag" data-page-node-id="yDSMLmzhPHNulFX4Jz0L5M">酒店 · 全员</span></h3>
+      <div class="row" data-page-node-id="63wnZKcuVy79cqFviPtDTQ"><span class="k" data-page-node-id="v82M57aGKRJcw9QBpXgLt3">时间</span>9/17 15:00 后入住 · 9/18 12:00 前退房（1 晚 · 2 间）</div>
+      <div class="row" data-page-node-id="gRYi1Zbo9dyBbk3Gbl0hqd"><span class="k" data-page-node-id="31x9XZss6TBLw2DYNOWIxs">地址</span>16, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur</div>
+      <div class="row" data-page-node-id="bnmI1SLr7ahyDvBgKiFh0i"><span class="k" data-page-node-id="T6MUpCzKobw6SKumM2hx7D">费用</span>房费已含旅游税；到店需交押金（现金或信用卡均可）</div>
+      <div class="row" data-page-node-id="DBthwZiqI5Prbivh3v3jI1"><span class="k" data-page-node-id="9wvXXvybsvE2tHnyrqkZpl">提示</span>对面就是 Imbi 单轨站；去 KLIA 两座航站楼都约 1 小时</div>
+      <div class="acts" data-page-node-id="CQkI9qlKGikU4xA1avAtQN">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Melia%20Kuala%20Lumpur%20Jalan%20Imbi" data-page-node-id="9bhGj30oAY6mDGKA18YnAW">导航</a>
+        <a class="tel" href="tel:+60327852828" data-page-node-id="zP3gEl8UgZ11mdsFB0Fz1r">电话 +60 3-2785 2828</a>
       </div>
     </div>
-    <div class="card bk">
-      <h3>9/18（五）亚洲航空 AK6218 <span class="tag">机票 · 小赵、小陈</span></h3>
-      <div class="row"><span class="k">时间</span>16:10 吉隆坡 T2 → 17:10 苏丹马赫穆德机场（登嘉楼）</div>
-      <div class="row"><span class="k">备注</span>廉价航空需提前线上值机；每人含 20kg 托运行李 + 7kg 手提；当天中午已从美利亚退房</div>
+    <div class="card bk" data-page-node-id="ML33eP1Tehu3n3nJ4l5AaD">
+      <h3 data-page-node-id="PZJNq6nGWTXRWOlpFmfrlk">9/18（五）亚洲航空 AK6218 <span class="tag" data-page-node-id="lzGM0PtEC1hJMpo8pDsgl9">机票 · 小赵、小陈</span></h3>
+      <div class="row" data-page-node-id="0lyhArDAADI6yKEQIEzwRb"><span class="k" data-page-node-id="wTNPZRmdBHmiJZE0uURbXC">时间</span>16:10 吉隆坡 T2 → 17:10 苏丹马赫穆德机场（登嘉楼）</div>
+      <div class="row" data-page-node-id="vKdLczpgfeHX86DBWrbu0k"><span class="k" data-page-node-id="FusOZoxxGloJUyEXhBVzJC">备注</span>廉价航空需提前线上值机；每人含 20kg 托运行李 + 7kg 手提；当天中午已从美利亚退房</div>
     </div>
-    <div class="card bk">
-      <h3>9/18–9/19 alvilla@kampung cina（瓜拉登嘉楼）<span class="tag">酒店 · 小赵、小陈</span></h3>
-      <div class="row"><span class="k">时间</span>9/18 15:00 后入住 · 9/19 11:00 前退房（1 间双床）</div>
-      <div class="row"><span class="k">地址</span>Jalan Kampung Cina, 20100 Kuala Terengganu（唐人街）</div>
-      <div class="row"><span class="k">提示</span>住一晚只为转船，行李别全开箱</div>
-      <div class="acts">
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=alvilla%20kampung%20cina%20Kuala%20Terengganu">导航</a>
-        <a class="tel" href="tel:+601120998196">电话 +60 11-2099 8196</a>
+    <div class="card bk" data-page-node-id="oVzPKwRxvLhRaQTUZYzbsC">
+      <h3 data-page-node-id="ZaHzXGp9HcjlRhS3xlnmDz">9/18–9/19 alvilla@kampung cina（瓜拉登嘉楼）<span class="tag" data-page-node-id="ohWeRAUQ3qh1XRe56sSnjV">酒店 · 小赵、小陈</span></h3>
+      <div class="row" data-page-node-id="O3HAjDHrXn1flzMDN6VGkp"><span class="k" data-page-node-id="OQxAXAtxLbrHqrdlLLJyNm">时间</span>9/18 15:00 后入住 · 9/19 11:00 前退房（1 间双床）</div>
+      <div class="row" data-page-node-id="WNrtG5J6ABSPDb5gCzXKlQ"><span class="k" data-page-node-id="5yMb3Z5cFDtcxdngQaGyJ2">地址</span>Jalan Kampung Cina, 20100 Kuala Terengganu（唐人街）</div>
+      <div class="row" data-page-node-id="bT0678Ns5oEUTByUzkMk8F"><span class="k" data-page-node-id="Moo3GnJR53wQROdvfUK2eT">提示</span>住一晚只为转船，行李别全开箱</div>
+      <div class="acts" data-page-node-id="xHHGNBK3Foto4NpENoRoFS">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=alvilla%20kampung%20cina%20Kuala%20Terengganu" data-page-node-id="mIcPH12BtVrDhQ0qSVpl4C">导航</a>
+        <a class="tel" href="tel:+601120998196" data-page-node-id="McOAOAqoGX0K3g2UHGKqBW">电话 +60 11-2099 8196</a>
       </div>
     </div>
-    <div class="card bk">
-      <h3>9/19–9/21 热浪岛彩虹度假村 Redang Pelangi Resort <span class="tag">度假村 · 小赵、小陈</span></h3>
-      <div class="row"><span class="k">时间</span>9/19 上岛 · 9/21 出岛（3 天 2 夜 · 豪华双人房 · 全食宿）</div>
-      <div class="row"><span class="k">套餐</span>2 早 2 午 2 下午茶 2 晚 + 3 次出海浮潜 + 冷气独卫</div>
-      <div class="row"><span class="k">费用</span>2 人共 RM1450（含旅游税）；定金已付，<span class="money">岛上付尾款 RM1050（只收马币现金或信用卡）</span></div>
-      <div class="row"><span class="k">码头</span>墨浪码头 Merang Jetty，进岛船班 08:30–10:30；<span class="money">另付现金：海洋公园保育费 RM30/人 + 码头管理费 RM5/人</span></div>
-      <div class="row"><span class="k">租借</span>浮潜镜 RM10（近视款 RM25）、救生衣 RM10（乘浮潜船必穿）</div>
-      <div class="row"><span class="k">地址</span>2A, Jalan Syed Hussin, 20100 Kuala Terengganu（陆地办公室）</div>
-      <div class="acts">
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Redang%20Pelangi%20Resort%20Pulau%20Redang">导航（岛上度假村）</a>
-        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Merang%20Jetty%20Terengganu">导航（墨浪码头）</a>
-        <a class="tel" href="tel:+6096242158">电话 09-624 2158</a>
-        <a class="tel" href="tel:+60199834158">手机 019-9834 158</a>
+    <div class="card bk" data-page-node-id="TCKEiUTLMxkOPYBsC3Lzeg">
+      <h3 data-page-node-id="7quBL4kdyjZztalt5JHsAY">9/19–9/21 热浪岛彩虹度假村 Redang Pelangi Resort <span class="tag" data-page-node-id="S2qcnFbWH96MH4xmHcE6px">度假村 · 小赵、小陈</span></h3>
+      <div class="row" data-page-node-id="TDFL7ECzoHHWckbDYTrasB"><span class="k" data-page-node-id="B9B8a0rJ3YvmqBGrfgiKFs">时间</span>9/19 上岛 · 9/21 出岛（3 天 2 夜 · 豪华双人房 · 全食宿）</div>
+      <div class="row" data-page-node-id="bTlLsfOkXMFFCihyVtufSH"><span class="k" data-page-node-id="scmmgqwxUHEkNYJPFCzFiR">套餐</span>2 早 2 午 2 下午茶 2 晚 + 3 次出海浮潜 + 冷气独卫</div>
+      <div class="row" data-page-node-id="y293jf0qZRHpjJlF6bspB9"><span class="k" data-page-node-id="sa3ZvvOH495R74EvmYSNQS">费用</span>2 人共 RM1450（含旅游税）；定金已付，<span class="money" data-page-node-id="atuJR6bUo1zQKHmc5U9NwB">岛上付尾款 RM1050（只收马币现金或信用卡）</span></div>
+      <div class="row" data-page-node-id="gLLiBSrJDMKcmMQaEvCZCg"><span class="k" data-page-node-id="ODx6c5AAPFfJGOQZwCDENd">码头</span>墨浪码头 Merang Jetty，进岛船班 08:30–10:30；<span class="money" data-page-node-id="XvfCBoPxe1ultq16E8wUVm">另付现金：海洋公园保育费 RM30/人 + 码头管理费 RM5/人</span></div>
+      <div class="row" data-page-node-id="laEvWTO1JZszIfJ9tfZjBw"><span class="k" data-page-node-id="rX5GTAAehQXLdImstPTtSq">租借</span>浮潜镜 RM10（近视款 RM25）、救生衣 RM10（乘浮潜船必穿）</div>
+      <div class="row" data-page-node-id="KRHKdMcrPXKB4IpswlhKhp"><span class="k" data-page-node-id="i3zFIGsAWpYtiq6nGn4phe">地址</span>2A, Jalan Syed Hussin, 20100 Kuala Terengganu（陆地办公室）</div>
+      <div class="acts" data-page-node-id="tPkxqEjN7oUxK28lHvjWUs">
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Redang%20Pelangi%20Resort%20Pulau%20Redang" data-page-node-id="9mbVlOBARgiNgUvpDpxF64">导航（岛上度假村）</a>
+        <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Merang%20Jetty%20Terengganu" data-page-node-id="HAnIcZmQKOxQdbZzaC0PQF">导航（墨浪码头）</a>
+        <a class="tel" href="tel:+6096242158" data-page-node-id="9n0EcPvRJyHMkZkH5OayiQ">电话 09-624 2158</a>
+        <a class="tel" href="tel:+60199834158" data-page-node-id="sZucYGghXeGMtKcGsOFJ0L">手机 019-9834 158</a>
       </div>
     </div>
-    <div class="card bk">
-      <h3>9/20（日）四川航空 3U3996 <span class="tag">机票 · 小黄、小李</span></h3>
-      <div class="row"><span class="k">时间</span>15:20 吉隆坡 KLIA T1 → 20:05 成都天府 T1</div>
-      <div class="row"><span class="k">备注</span>川航在 KLIA T1（亚航在 T2，两个航站楼不同）</div>
+    <div class="card bk" data-page-node-id="0FC91UsgCo9yFSQbqNty1u">
+      <h3 data-page-node-id="20Dcoz4TkLPJ3cIQPYb7Mf">9/20（日）四川航空 3U3996 <span class="tag" data-page-node-id="sy7UPfl2if2MlYDfsQlKWV">机票 · 小黄、小李</span></h3>
+      <div class="row" data-page-node-id="3oTq32CLIm2BDeudVn0Ma8"><span class="k" data-page-node-id="I7iOjUZPrqNq1yvoiKNh7R">时间</span>15:20 吉隆坡 KLIA T1 → 20:05 成都天府 T1</div>
+      <div class="row" data-page-node-id="M4jPTotg03BTF3srIKyBJI"><span class="k" data-page-node-id="wrH8UKd4F6eKQsTaPIn8rU">备注</span>川航在 KLIA T1（亚航在 T2，两个航站楼不同）</div>
     </div>
-    <div class="card bk">
-      <h3>9/21（一）亚洲航空 AK6219 <span class="tag">机票 · 小赵、小陈</span></h3>
-      <div class="row"><span class="k">时间</span>17:45 苏丹马赫穆德机场 → 18:45 吉隆坡 T2</div>
-      <div class="row"><span class="k">备注</span>当天 8 点出岛开船，时间充裕；18:45 抵达的是 KLIA T2，9/24 回国从 KLIA T1 走</div>
+    <div class="card bk" data-page-node-id="XWAsRwH6mDKjWZoqd4vHWI">
+      <h3 data-page-node-id="198sCIgkh70xC3tjxXUlio">9/21（一）亚洲航空 AK6219 <span class="tag" data-page-node-id="ZnrmFitAazCYFjwAGcj0Ed">机票 · 小赵、小陈</span></h3>
+      <div class="row" data-page-node-id="lGMFNzJhW986i73hZ3UM1H"><span class="k" data-page-node-id="zUlKSSBcOXFWWKqauZ9bTd">时间</span>17:45 苏丹马赫穆德机场 → 18:45 吉隆坡 T2</div>
+      <div class="row" data-page-node-id="oRDzM6D63bVuc8zBzBJQmz"><span class="k" data-page-node-id="7nJ9RXeyZsLNIimnq6V4wm">备注</span>当天 8 点出岛开船，时间充裕；18:45 抵达的是 KLIA T2，9/24 回国从 KLIA T1 走</div>
     </div>
-    <div class="card bk">
-      <h3>9/21–9/22 吉隆坡两晚 <span class="tag wait">酒店 · 小赵、小陈 · 未订</span></h3>
-      <div class="row"><span class="k">说明</span>小赵、小陈 9/21 晚与 9/22 晚住宿待订，见下方待办清单</div>
+    <div class="card bk" data-page-node-id="N0RT2FrV3XbQLTqECUKY2Z">
+      <h3 data-page-node-id="cDv5mSXxbfN7lhxGERl3RR">9/21–9/22 吉隆坡两晚 <span class="tag wait" data-page-node-id="E4zcjK3gUBdHqrJkgtcs7M">酒店 · 小赵、小陈 · 未订</span></h3>
+      <div class="row" data-page-node-id="m79RC9fqiPEHdYCEHrbuxi"><span class="k" data-page-node-id="dsHwILnb6Lrd2VkWfmniy7">说明</span>小赵、小陈 9/21 晚与 9/22 晚住宿待订，见下方待办清单</div>
     </div>
-    <div class="card bk">
-      <h3>9/24（四）四川航空 3U3994 <span class="tag">机票 · 小赵、小陈</span></h3>
-      <div class="row"><span class="k">时间</span>00:20 吉隆坡 KLIA T1 → 04:50 成都天府 T1</div>
-      <div class="row"><span class="k">备注</span>出发航站楼是 KLIA T1（亚航在 T2，别走错）；9/23 晚不订房，傍晚退房寄存行李后直接去机场</div>
+    <div class="card bk" data-page-node-id="7OQ3LZNqpnLSK6YDZ2uz8E">
+      <h3 data-page-node-id="tL7o3ZarCChb0RfvFHIPdw">9/24（四）四川航空 3U3994 <span class="tag" data-page-node-id="iUzDOSBRjmvdM29X2FL7Gf">机票 · 小赵、小陈</span></h3>
+      <div class="row" data-page-node-id="o2aPaMsK7hxtibYPzOMx6E"><span class="k" data-page-node-id="Q6AT9CqCD8WUyCOs2ojgIL">时间</span>00:20 吉隆坡 KLIA T1 → 04:50 成都天府 T1</div>
+      <div class="row" data-page-node-id="eI4Tjr1X1B3VNTBc359Uf6"><span class="k" data-page-node-id="0qnlbZatfOSL9vyjSnNKWN">备注</span>出发航站楼是 KLIA T1（亚航在 T2，别走错）；9/23 晚不订房，傍晚退房寄存行李后直接去机场</div>
     </div>
   </div>
 </section>
 
 <!-- 逐日行程 -->
-<section id="days">
-  <h2 class="sec">逐日行程<small>Day by Day</small></h2>
-  <div id="days-list"></div>
+<section id="days" data-page-node-id="ZLGzR6RGlTDurpFqFQAmbG">
+  <h2 class="sec" data-page-node-id="ZAZK6bqOpaxO5EsF61aRuN">逐日行程<small data-page-node-id="u8zDFl8JsDo7pme2Rua5m9">Day by Day</small></h2>
+  <div id="days-list" data-page-node-id="hGMBcjbREEzBkdwZ4eTP5h"><div class="card day"><div class="head"><span class="date">9月12日</span><span class="wd">周六</span><span class="ttl">成都 → 槟城</span><span class="stay">宿：飞机上</span></div><ol><li><span class="t">17:00</span><span class="c">抵达<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Chengdu%20Tianfu%20International%20Airport%20Terminal%201">成都天府国际机场 T1</a>，值机托运<small>国际出发，建议提前 3 小时</small></span></li><li><span class="t">20:05</span><span class="c">四川航空 3U3911 起飞 → 槟城<small>飞行约 4 小时 40 分，机上看一部电影的时间</small></span></li><li><span class="t">00:05</span><span class="c">落地<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Penang%20International%20Airport">槟城国际机场</a>（9/13 凌晨）<small>出关加拿行李约 40 分钟</small></span></li><li><span class="t">01:00</span><span class="c">深夜进市区：机场 → 乔治市约 20 km，Grab 约 30–40 分钟<small>待办：提前约好接机更稳</small></span></li><li><span class="t">01:40</span><span class="c">入住槟城万怡（房间自 9/12 起保留，直接入住）</span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">车约40分钟</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">槟城国际机场</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">槟城万怡酒店</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Penang%20International%20Airport/Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月13日</span><span class="wd">周日</span><span class="ttl">槟城 · 乔治市世遗漫步</span><span class="stay">宿：槟城万怡</span></div><ol><li><span class="t">08:30</span><span class="c">早餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Ali%20Nasi%20Lemak%20Daun%20Pisang%20Penang">Ali Nasi Lemak Daun Pisang</a>，本地人排队的椰浆饭</span></li><li><span class="t">10:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Chew%20Jetty%20Penang">姓氏桥</a>：海边连屋栈桥，趁早去人少</span></li><li><span class="t">11:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Pinang%20Peranakan%20Mansion">槟城侨生博物馆</a>，现场购票<small>每日开放 9:30–16:30，娘惹文化金碧辉煌</small></span></li><li><span class="t">13:00</span><span class="c">午餐：多春茶室烤面包 / <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Kimberly%20Street%20Penang">青屋虾面</a></span></li><li><span class="t">14:30</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Cheong%20Fatt%20Tze%20Mansion">张弼士故居（蓝屋）</a> → <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Sun%20Yat%20Sen%20Museum%20Penang">孙中山槟城纪念馆</a><small>两处步行 10 分钟内</small></span></li><li><span class="t">17:30</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Jubilee%20Clock%20Tower%20Penang">旧关仔角钟楼</a>一带看日落</span></li><li><span class="t">19:00</span><span class="c">晚餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Kimberly%20Street%20Penang">汕头街</a>夜市：炒粿条、蚝煎、四果汤<small>饭后榴莲：聚檀堂 / 榴莲天下</small></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 672 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:672px"><path class="path" d="M 60 36 C 84 30, 220 42, 244 36"></path><text class="mode" x="152" y="20" text-anchor="middle">Grab</text><path class="path" d="M 244 36 C 268 30, 404 42, 428 36"></path><text class="mode" x="336" y="20" text-anchor="middle">步行</text><path class="path" d="M 428 36 C 452 30, 588 42, 612 36"></path><text class="mode" x="520" y="20" text-anchor="middle">Grab</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">槟城万怡</text><circle class="node" cx="244" cy="36" r="7"></circle><text class="pt" x="244" y="66" text-anchor="middle">姓氏桥</text><circle class="node" cx="428" cy="36" r="7"></circle><text class="pt" x="428" y="66" text-anchor="middle">侨生博物馆</text><circle class="node" cx="612" cy="36" r="7"></circle><text class="pt" x="612" y="66" text-anchor="middle">汕头街</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister/Chew%20Jetty%20Penang/Pinang%20Peranakan%20Mansion/Kimberly%20Street%20Penang">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月14日</span><span class="wd">周一</span><span class="ttl">槟城 · 升旗山（看天行事）</span><span class="stay">宿：槟城万怡</span></div><ol><li><span class="t">09:00</span><span class="badge">需提前购票</span><span class="c">出发<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Penang%20Hill">升旗山</a>坐缆车上山<small>天气好有全景和云海；下雨就改成纪念馆+逛街，行程灵活</small></span></li><li><span class="t">12:30</span><span class="c">下山，午餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%9C%E5%90%A7%E7%94%9F%E8%82%89%E9%AA%A8%E8%8C%B6%20%E6%A7%9F%E5%9F%8E">焜吧生肉骨茶</a><small>干肉骨茶、芋头饭是招牌</small></span></li><li><span class="t">14:30</span><span class="c">回酒店泳池休整，等太阳斜了再出门</span></li><li><span class="t">19:00</span><span class="c">晚餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Gurney%20Drive%20hawker%20centre%20Penang">新关仔角夜市</a><small>迪玛末扁担饭（大表哥 12k 好评）就在这一带</small></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">车约30分钟</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">车约20分钟</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">槟城万怡</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">升旗山</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">新关仔角夜市</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister/Penang%20Hill/Gurney%20Drive%20hawker%20centre%20Penang">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月15日</span><span class="wd">周二</span><span class="ttl">槟城 · 海滩与逛街</span><span class="stay">宿：槟城万怡</span></div><ol><li><span class="t">09:30</span><span class="c">天气好：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Batu%20Ferringhi%20Beach%20Penang">峇都丁宜海滩</a>玩水；天不好：睡懒觉 + <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Sun%20Yat%20Sen%20Memorial%20Penang">孙中山槟城基地纪念馆</a><small>升旗山没去成也可以今天补</small></span></li><li><span class="t">12:00</span><span class="c">午餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=JOJA%20Bagels%20Penang">JOJA Bagels</a>（云妹点名要）或潮记牛肉面</span></li><li><span class="t">14:00</span><span class="c">逛街：光大广场（换汇 HME）→ <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Nala%20Penang%20Beach%20Street">Nala Penang</a>（本地品牌 T 恤）→ <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Rerotan%20Penang">Rerotan</a>（蜡染扎染）→ <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Beryl's%20Penang%20Lebuh%20Leith">Beryl's 巧克力</a></span></li><li><span class="t">17:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Ais%20Tingkap%20Penang">Ais Tingkap</a> 煎蕊奶茶歇脚</span></li><li><span class="t">19:00</span><span class="c">收拾行李；晚餐：本头公巷一带（The FOUNDERS Hutton 周杰伦同款贝果 / 本头公巷咖啡馆）</span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">车约40分钟</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">车约30分钟</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">槟城万怡</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">峇都丁宜海滩</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">光大广场</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister/Batu%20Ferringhi%20Beach%20Penang/KOMTAR%20George%20Town%20Penang">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月16日</span><span class="wd">周三 · 马来西亚日</span><span class="ttl">槟城 → 怡保（包车）</span><span class="stay">宿：怡保 AC 酒店</span></div><ol><li><span class="t">08:30</span><span class="c">退房，包车出发怡保（约 2 小时）<small>马来西亚日全国假期，路上人多早出发</small></span></li><li><span class="t">10:30</span><span class="c">抵怡保，早午餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Nam%20Heong%20White%20Coffee%20Ipoh">新源隆白咖啡</a>（烤面包 + 萝卜糕）</span></li><li><span class="t">12:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Ipoh%20Railway%20Station">怡保火车站广场</a>、市政厅、<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Birch%20Memorial%20Clock%20Tower">毕治纪念塔</a>：泰姬陵风白墙圆顶，步行一圈<small>怡保泰姬陵就是火车站本站</small></span></li><li><span class="t">14:30</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Ipoh%20Mural%20Art%20Lane">壁画街</a>、<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Concubine%20Lane%20Ipoh">二奶巷</a>、闲真别墅（矿业博物馆需提前预约）<small>顺路：Kong Heng Square 文创市集 + Market Lane Antique Cafe 三奶巷</small></span></li><li><span class="t">15:00</span><span class="c">入住<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=AC%20Hotel%20by%20Marriott%20Ipoh">怡保 AC 酒店</a>（先放行李再继续逛）</span></li><li><span class="t">19:00</span><span class="c">晚餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AB%98%E6%B8%A9%E8%A1%97%E8%8A%BD%E8%8F%9C%E9%B8%A1%E6%B2%99%E6%B2%B3%E7%B2%89%20%E6%80%A1%E4%BF%9D">高温街芽菜雞沙河粉</a> / 幸运餐馆（鱼蛋生虾面）<small>甜点：MACHA 抹茶 / 奇峰；假期名店排长队早去</small></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 672 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:672px"><path class="path" d="M 60 36 C 84 30, 220 42, 244 36"></path><text class="mode" x="152" y="20" text-anchor="middle">包车约2小时</text><path class="path" d="M 244 36 C 268 30, 404 42, 428 36"></path><text class="mode" x="336" y="20" text-anchor="middle">步行</text><path class="path" d="M 428 36 C 452 30, 588 42, 612 36"></path><text class="mode" x="520" y="20" text-anchor="middle">车约10分钟</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">槟城万怡</text><circle class="node" cx="244" cy="36" r="7"></circle><text class="pt" x="244" y="66" text-anchor="middle">怡保火车站</text><circle class="node" cx="428" cy="36" r="7"></circle><text class="pt" x="428" y="66" text-anchor="middle">怡保老城</text><circle class="node" cx="612" cy="36" r="7"></circle><text class="pt" x="612" y="66" text-anchor="middle">怡保AC酒店</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Courtyard%20by%20Marriott%20Penang%20218D%20Jalan%20Macalister/Ipoh%20Railway%20Station/Concubine%20Lane%20Ipoh/AC%20Hotel%20by%20Marriott%20Ipoh">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月17日</span><span class="wd">周四</span><span class="ttl">怡保 · 市区吃喝一整天</span><span class="stay">宿：吉隆坡美利亚</span></div><ol><li><span class="t">08:30</span><span class="c">早餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A9%E6%B4%A5%E9%A5%AE%E5%86%B0%E5%AE%A4%20%E6%80%A1%E4%BF%9D">天津饮冰室</a>白咖啡 / 东泰茶铺</span></li><li><span class="t">10:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Yum%20Cha%20House%20Dim%20Sum%20Ipoh">Yum Cha House 袁月楼港式点心</a>早茶<small>4.8 星 8k+ 评价，点的都好吃</small></span></li><li><span class="t">12:00</span><span class="c">回酒店退房；<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%B4%E7%90%BC%E6%9E%97%E7%9B%90%E7%84%97%E9%B8%A1%20%E6%80%A1%E4%BF%9D">宴琼林盐焗鸡</a>打包上车当路上零食</span></li><li><span class="t">13:30</span><span class="c">包车出发吉隆坡（约 2.5–3 小时）</span></li><li><span class="t">16:30</span><span class="c">入住<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Melia%20Kuala%20Lumpur%20Jalan%20Imbi">吉隆坡美利亚</a><small>EVERSINCE Imbi 服装店就在酒店旁边，可以先逛</small></span></li><li><span class="t">19:30</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan%20Alor%20Kuala%20Lumpur">阿罗街</a>夜市；榴莲宵夜：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Durian%20Bros%20Kuala%20Lumpur">榴莲兄弟</a></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">车约10分钟</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">包车约3小时</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">怡保AC酒店</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">旧街场</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">吉隆坡美利亚</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/AC%20Hotel%20by%20Marriott%20Ipoh/Ipoh%20Old%20Town/Melia%20Kuala%20Lumpur%20Jalan%20Imbi">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月18日</span><span class="wd">周五</span><span class="ttl">吉隆坡 · 半人分流日</span><span class="stay">宿：瓜登 alvilla（赵/陈）</span></div><ol><li><span class="t">08:30</span><span class="c">早餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B0%B8%E5%85%B4%E5%9F%8E%E8%8C%B6%E5%AE%A4%20%E5%90%89%E9%9A%86%E5%9D%A1">永兴城茶室</a>（榴莲早上 9–10 点开卖，卖完就没了）或华阳<small>华阳：椰浆饭、咖喱面、半熟蛋吐司</small></span></li><li><span class="t">09:30</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Merdeka%20Square%20Kuala%20Lumpur">独立广场</a> + <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Jamek%20Mosque%20Kuala%20Lumpur">占美清真寺</a>（外观）</span></li><li><span class="t">11:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Petaling%20Street%20Kuala%20Lumpur">茨厂街</a>逛一圈</span></li><li><span class="t">12:00</span><span class="c">美利亚退房，行李寄存前台</span></li><li><span class="t">13:15</span><span class="c">小赵、小陈出发去 KLIA T2（Grab 或机场快线约 1 小时）<span class="who">（赵/陈）</span><small>亚航在 T2！</small></span></li><li><span class="t">16:10</span><span class="badge">需提前值机</span><span class="c">亚航 AK6218 起飞 → 17:10 抵<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Sultan%20Mahmud%20Airport%20Kuala%20Terengganu">苏丹马赫穆德机场</a><span class="who">（赵/陈）</span><small>每人含 20kg 托运 + 7kg 手提</small></span></li><li><span class="t">18:00</span><span class="c">机场 → 瓜登市区约 20 分钟，入住<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=alvilla%20kampung%20cina%20Kuala%20Terengganu">alvilla@kampung cina</a><span class="who">（赵/陈）</span></span></li><li><span class="t">19:30</span><span class="c">瓜登唐人街晚餐：Pasar Payang 市场一带<span class="who">（赵/陈）</span><small>小黄、小李自由行，住宿自理；9/20 从 KLIA T1 回国</small></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">Grab</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">步行</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">吉隆坡美利亚</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">独立广场</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">茨厂街</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Melia%20Kuala%20Lumpur%20Jalan%20Imbi/Merdeka%20Square%20Kuala%20Lumpur/Petaling%20Street%20Kuala%20Lumpur">导航 · 第 1 段（吉隆坡美利亚 → 茨厂街）</a></div><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">车约1小时</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">吉隆坡美利亚</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">吉隆坡T2</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Melia%20Kuala%20Lumpur%20Jalan%20Imbi/KLIA%20Terminal%202%20Sepang">导航 · 第 2 段（吉隆坡美利亚 → 吉隆坡T2）</a></div><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">飞机 1h</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">登嘉楼机场</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">瓜登alvilla</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Sultan%20Mahmud%20Airport%20Kuala%20Terengganu/alvilla%20kampung%20cina%20Kuala%20Terengganu">导航 · 第 3 段（登嘉楼机场 → 瓜登alvilla）</a></div></details></div><div class="card day"><div class="head"><span class="date">9月19日</span><span class="wd">周六</span><span class="ttl">瓜登 → 热浪岛（上岛）</span><span class="stay">宿：热浪岛彩虹度假村</span></div><ol><li><span class="t">07:15</span><span class="badge">需跟度假村确认</span><span class="c">彩虹度假村的车来 alvilla 接人<small>出发前一晚微信再确认一次时间和车牌</small></span></li><li><span class="t">08:15</span><span class="c">抵墨浪码头，付海洋公园保育费 RM30/人 + 码头管理费 RM5/人（现金）</span></li><li><span class="t">08:30</span><span class="c">船班进岛（08:30–10:30 窗口，船程约 45–60 分钟）<small>提前吃晕船药，手机装防水袋</small></span></li><li><span class="t">09:30</span><span class="c">抵岛登记，12:00 前入住豪华房（两晚）<small>全食宿套餐开始：三餐 + 下午茶 + 3 次浮潜</small></span></li><li><span class="t">14:30</span><span class="c">出海浮潜 #1（16:00 下午茶，19:00 晚餐/烧烤）<small>浮潜船必须穿救生衣</small></span></li><li><span class="t">全天</span><span class="c">小黄、小李：吉隆坡自由行<span class="who">（黄/李）</span></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">车约1小时</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">船约1小时</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">瓜登alvilla</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">墨浪码头</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">彩虹度假村</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/alvilla%20kampung%20cina%20Kuala%20Terengganu/Merang%20Jetty%20Terengganu/Redang%20Pelangi%20Resort%20Pulau%20Redang">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月20日</span><span class="wd">周日</span><span class="ttl">热浪岛 · 浮潜一整天</span><span class="stay">宿：热浪岛彩虹度假村</span></div><ol><li><span class="t">07:30</span><span class="c">早餐；09:30–12:00 出海浮潜 #2</span></li><li><span class="t">12:00</span><span class="c">午餐 + 午休；14:30–16:30 出海浮潜 #3</span></li><li><span class="t">16:00</span><span class="c">下午茶；傍晚沙滩散步、看日落和星空</span></li><li><span class="t">19:00</span><span class="c">晚餐；今晚整理行李，明早 8 点出岛</span></li><li><span class="t">13:00</span><span class="c">小黄、小李出发去 KLIA T1（川航在 T1，不是亚航的 T2）<span class="who">（黄/李）</span></span></li><li><span class="t">15:20</span><span class="c">川航 3U3996 起飞 → 20:05 落地成都天府 T1<span class="who">（黄/李）</span></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 320 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:320px"><circle class="node" cx="160" cy="36" r="7"></circle><text class="pt" x="160" y="66" text-anchor="middle">热浪岛彩虹度假村</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Redang%20Pelangi%20Resort%20Pulau%20Redang">导航 · 第 1 段（热浪岛彩虹度假村 → 热浪岛彩虹度假村）</a></div><svg viewBox="0 0 320 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:320px"><circle class="node" cx="160" cy="36" r="7"></circle><text class="pt" x="160" y="66" text-anchor="middle">KLIA T1（黄李出发）</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/KLIA%20Terminal%201">导航 · 第 2 段（KLIA T1（黄李出发） → KLIA T1（黄李出发））</a></div></details></div><div class="card day"><div class="head"><span class="date">9月21日</span><span class="wd">周一</span><span class="ttl">热浪岛 → 吉隆坡（赵/陈）</span><span class="stay">宿：吉隆坡（未订）</span></div><ol><li><span class="t">08:00</span><span class="c">退房、开船回墨浪码头（约 1 小时）</span></li><li><span class="t">09:30</span><span class="c">度假村车送机场（约 35 分钟）</span></li><li><span class="t">12:00</span><span class="c">抵机场候机，午后时间充裕，慢慢来</span></li><li><span class="t">17:45</span><span class="badge">需提前值机</span><span class="c">亚航 AK6219 起飞 → 18:45 抵 KLIA T2<small>注意：9/24 回国从 KLIA T1 走，两个航站楼不同</small></span></li><li><span class="t">19:30</span><span class="c">进市区入住（酒店未订，见待办清单）；晚餐：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Jalan%20Alor%20Kuala%20Lumpur">亚罗美食街</a></span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">船约1小时</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">彩虹度假村</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">墨浪码头</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Redang%20Pelangi%20Resort%20Pulau%20Redang/Merang%20Jetty%20Terengganu">导航 · 第 1 段（彩虹度假村 → 墨浪码头）</a></div><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">车约35分钟</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">墨浪码头</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">登嘉楼机场</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Merang%20Jetty%20Terengganu/Sultan%20Mahmud%20Airport%20Kuala%20Terengganu">导航 · 第 2 段（墨浪码头 → 登嘉楼机场）</a></div></details></div><div class="card day"><div class="head"><span class="date">9月22日</span><span class="wd">周二</span><span class="ttl">吉隆坡 · 经典打卡</span><span class="stay">宿：吉隆坡（未订）</span></div><ol><li><span class="t">09:00</span><span class="c">早餐：华阳（酒店附近）或 <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Village%20Park%20Restaurant%20Kuala%20Lumpur">Village Park</a>椰浆饭炸鸡（颜如晶推荐，Grab 约 30 分钟，可选）</span></li><li><span class="t">10:30</span><span class="badge">观景台需提前购票</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Petronas%20Twin%20Towers">双子塔</a> + KLCC 阳光广场<small>假期前后易售罄；不上去在 KLCC 公园拍全景也很好</small></span></li><li><span class="t">14:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Central%20Market%20Kuala%20Lumpur">中央艺术坊</a> + 茨厂街买手信（Haniffa 百货、k&amp;j 毛拖鞋）</span></li><li><span class="t">16:00</span><span class="c"><a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Pavilion%20Kuala%20Lumpur">柏威年广场</a> 或 <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=TRX%20Kuala%20Lumpur">TRX 敦拉萨贸中心</a>逛商场</span></li><li><span class="t">18:00</span><span class="c">榴莲时间：<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=Durian%20Bros%20Kuala%20Lumpur">榴莲兄弟</a> / <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%85%B4%E6%97%BA%E6%A6%B4%E8%8E%B2%E7%8E%8B%E8%87%AA%E5%8A%A9%20%E5%90%89%E9%9A%86%E5%9D%A1">兴旺榴莲王自助</a></span></li><li><span class="t">19:30</span><span class="c">晚餐：亚罗美食街 / <a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=TG's%20Bistro%20Kuala%20Lumpur">TG's Bistro</a>（roti tissue 超高印度塔）</span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 504 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:504px"><path class="path" d="M 60 36 C 84 30, 228 42, 252 36"></path><text class="mode" x="156" y="20" text-anchor="middle">Grab</text><path class="path" d="M 252 36 C 276 30, 420 42, 444 36"></path><text class="mode" x="348" y="20" text-anchor="middle">Grab</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">双子塔KLCC</text><circle class="node" cx="252" cy="36" r="7"></circle><text class="pt" x="252" y="66" text-anchor="middle">中央艺术坊</text><circle class="node" cx="444" cy="36" r="7"></circle><text class="pt" x="444" y="66" text-anchor="middle">柏威年广场</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Petronas%20Twin%20Towers/Central%20Market%20Kuala%20Lumpur/Pavilion%20Kuala%20Lumpur">一键打开全天多点导航</a></div></details></div><div class="card day"><div class="head"><span class="date">9月23日</span><span class="wd">周三</span><span class="ttl">吉隆坡 · 收尾回国</span><span class="stay">宿：飞机上</span></div><ol><li><span class="t">白天</span><span class="c">自由行 + 最后采购：柏威年 / 乐天广场补手信；<a class="loc" target="_blank" rel="noopener" title="在 Google 地图中打开" href="https://www.google.com/maps/search/?api=1&amp;query=103%20Coffee%20Chow%20Kit">103 Coffee</a>喝一杯（拉花冠军）</span></li><li><span class="t">12:00</span><span class="c">退房，行李寄存酒店前台</span></li><li><span class="t">16:30</span><span class="c">取行李出发去 KLIA T1（川航在 T1！车程约 1 小时，建议 21:00 前到机场）<small>亚航在 T2，别走错</small></span></li><li><span class="t">00:20</span><span class="c">四川航空 3U3994 起飞 → 成都（9/24）<small>红眼航班，机上补觉</small></span></li><li><span class="t">04:50</span><span class="c">落地成都天府 T1，回家补觉</span></li></ol><details class="daymap"><summary>展开当日路线 · <b>一键多点导航</b></summary><svg viewBox="0 0 336 92" preserveAspectRatio="xMidYMid meet" style="width:100%;max-width:336px"><path class="path" d="M 60 36 C 84 30, 252 42, 276 36"></path><text class="mode" x="168" y="20" text-anchor="middle">车约1小时</text><circle class="node" cx="60" cy="36" r="7"></circle><text class="pt" x="60" y="66" text-anchor="middle">吉隆坡市区</text><circle class="node" cx="276" cy="36" r="7"></circle><text class="pt" x="276" y="66" text-anchor="middle">KLIA T1</text></svg><div class="chainbtns"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/Kuala%20Lumpur%20city%20centre/KLIA%20Terminal%201">一键打开全天多点导航</a></div></details></div></div>
 </section>
 
 <!-- 待办清单 -->
-<section id="todo">
-  <h2 class="sec">待办清单<small>To-do List</small></h2>
-  <div class="card">
-    <ol class="plain">
-      <li>订吉隆坡酒店 2 晚：9/21、9/22（小赵、小陈 2 人）<small>　建议武吉免登或 KL Sentral 附近，去机场方便</small></li>
-      <li>出发前 3 天内：每人填写马来西亚电子入境卡 MDAC<small>　只认移民局官网 imigresen-online.imi.gov.my，免费，谨防代填钓鱼网站</small></li>
-      <li>微信彩虹度假村：报 AK6218 / AK6219 航班号，确认 9/19 早上到 alvilla 接人、9/21 码头送机<small>　陆路接送 RM15/人/单程，另付；错过船班需自费公共渡轮</small></li>
-      <li>出发前一周：跟度假村确认 9/19 船班与天气<small>　9 月接近季风季，船班可能因潮汐风浪调整</small></li>
-      <li>亚航提前值机：AK6218（9/18）、AK6219（9/21）<small>　App 或官网开放后尽早，机场柜台值机可能收费</small></li>
-      <li>提前购票：升旗山缆车票（9/14 用）、双子塔观景台票（9/22 用）<small>　公共假期前后易售罄，官方渠道购买</small></li>
-      <li>兑换马币现金：岛上尾款 RM1050 + 保育费 RM30/人 + 码头管理费 RM5/人 + 浮潜装备租金<small>　岛上只收现金或信用卡，小摊码头只收现金</small></li>
-      <li>约好 9/13 凌晨槟城机场 → 酒店的接机<small>　00:05 落地，出关约 40 分钟；不约就出关后打 Grab，约 30–40 分钟</small></li>
-      <li>行前检查：护照有效期 ≥6 个月、英标 Type G 转换插头、防晒、晕船药、手机防水袋、长袖水母衣</li>
+<section id="todo" data-page-node-id="OULYBDpDAWuYn320nuk3bA">
+  <h2 class="sec" data-page-node-id="KqbaiVHePko5D6SaOID5Q0">待办清单<small data-page-node-id="yyaUMVmU5SXpBSYLZIWX6a">To-do List</small></h2>
+  <div class="card" data-page-node-id="PjQMK6fzPAdv4I4C7AHiDw">
+    <ol class="plain" data-page-node-id="62TjYGPmW8AUe5XCnam4Sl">
+      <li data-page-node-id="5GAEcrQZ064C52fk5F2xk8">订吉隆坡酒店 2 晚：9/21、9/22（小赵、小陈 2 人）<small data-page-node-id="9dFkFjm2ZOadulyjYm0mAE">　建议武吉免登或 KL Sentral 附近，去机场方便</small></li>
+      <li data-page-node-id="iGEvHSRQS7FhtaTN38GNhU">出发前 3 天内：每人填写马来西亚电子入境卡 MDAC<small data-page-node-id="WUxICE3wMjBDkHIDbVkwYv">　只认移民局官网 imigresen-online.imi.gov.my，免费，谨防代填钓鱼网站</small></li>
+      <li data-page-node-id="zgaYwPEMCmIVXeLopL1jUs">微信彩虹度假村：报 AK6218 / AK6219 航班号，确认 9/19 早上到 alvilla 接人、9/21 码头送机<small data-page-node-id="CgOGfjBJz4G18ZmACTlYhY">　陆路接送 RM15/人/单程，另付；错过船班需自费公共渡轮</small></li>
+      <li data-page-node-id="CJxCSA3hLWVRCRaqHV0bfC">出发前一周：跟度假村确认 9/19 船班与天气<small data-page-node-id="uAAuujHJNl9a1dWXmSPNUv">　9 月接近季风季，船班可能因潮汐风浪调整</small></li>
+      <li data-page-node-id="zWW1mVx5RhKqV5lKzrf1iB">亚航提前值机：AK6218（9/18）、AK6219（9/21）<small data-page-node-id="LHfxFgRGIjtwFiBctCoRHR">　App 或官网开放后尽早，机场柜台值机可能收费</small></li>
+      <li data-page-node-id="7vLUAXO6amKegpFrpph2qT">提前购票：升旗山缆车票（9/14 用）、双子塔观景台票（9/22 用）<small data-page-node-id="wSD50szwlgFATRUOQfGUgz">　公共假期前后易售罄，官方渠道购买</small></li>
+      <li data-page-node-id="rl37tV3IirgeGFo6wGbMau">兑换马币现金：岛上尾款 RM1050 + 保育费 RM30/人 + 码头管理费 RM5/人 + 浮潜装备租金<small data-page-node-id="ZbFlckQGPvgsd1kfWj6U0o">　岛上只收现金或信用卡，小摊码头只收现金</small></li>
+      <li data-page-node-id="CdtWx8Zgjw60hRhXhcKNND">约好 9/13 凌晨槟城机场 → 酒店的接机<small data-page-node-id="lS7s5BB5tG1kXr6PxvfKRs">　00:05 落地，出关约 40 分钟；不约就出关后打 Grab，约 30–40 分钟</small></li>
+      <li data-page-node-id="KDSkeutvFzpDAVXllwQvuH">行前检查：护照有效期 ≥6 个月、英标 Type G 转换插头、防晒、晕船药、手机防水袋、长袖水母衣</li>
     </ol>
   </div>
 </section>
 
 <!-- 实用贴士 -->
-<section id="tips">
-  <h2 class="sec">实用贴士<small>Travel Tips</small></h2>
-  <div class="tips">
-    <div class="card"><b class="tt">时间</b>　马来西亚全程 UTC+8，和北京没有时差。本页所有时间都是当地时间，倒计时按绝对时刻计算，在哪个时区打开都不会错。</div>
-    <div class="card"><b class="tt">钱</b>　马币 RM，1 RM 约 1.7 元人民币。热浪岛两天建议每人备 300–400 RM 现金（尾款、保育费、码头费、装备租金、零食）；吉隆坡槟城怡保基本可以刷卡/扫码，但夜市要现金。</div>
-    <div class="card"><b class="tt">天气</b>　9 月 26–33°C，阳光毒辣，午后常有雷阵雨。浮潜备长袖水母衣和珊瑚友好防晒；船程约 1 小时，容易晕船的提前吃药。</div>
-    <div class="card"><b class="tt">假期</b>　9/16 是马来西亚日（全国公共假期），恰逢槟城→怡保转场：公路车多、怡保名店大排长龙，尽量避开饭点吃饭。</div>
-    <div class="card"><b class="tt">热浪岛</b>　套餐含 3 次浮潜、三餐和下午茶；深潜需潜水执照且另收费（RM360 起）。浮潜船必须穿救生衣。9 月下旬已近季风季末，风浪多变，一切以度假村现场通知为准。</div>
-    <div class="card"><b class="tt">交通</b>　Grab 在四个城市都好用。吉隆坡市区坐单轨/轻轨更省；瓜登市区到墨浪码头约 1 小时车程；槟城乔治市老城适合步行。</div>
-    <div class="card"><b class="tt">吉隆坡机场分两座航站楼</b>　KLIA T1（川航：9/20 小黄小李 3U3996、9/24 3U3994 出发）和 KLIA T2（亚航：9/18 出发、9/21 到达），两楼相距约 10 分钟车程，走错很耽误事。出发前再看一眼行程卡。</div>
-    <div class="card"><b class="tt">行李</b>　亚航 AK6218 / AK6219 每人含 20kg 托运行李 + 7kg 手提（个人物品和手提行李合计 7kg，登机箱别超重）。上热浪岛两晚建议精简行李，大箱子可以寄存在瓜登或吉隆坡。</div>
-    <div class="card"><b class="tt">住宿</b>　马来西亚酒店普遍禁带榴莲、山竹入内。税费分三种：槟城万怡到店另付 MYR104（旅游税+文化遗产税共 RM13/房/晚×8 房晚）；怡保 AC 已含旅游税、到店另付城市税 RM6/间/晚；美利亚已含旅游税、到店交押金（现金或信用卡）；热浪岛旅游税已含在 RM1450 套餐里。</div>
-    <div class="card"><b class="tt">入境</b>　出发前 3 天内填写 MDAC 电子入境卡（免费，只认移民局官网）；护照有效期需 6 个月以上。</div>
-    <div class="card"><b class="tt">通讯</b>　机场可买 Hotlink / Celcom 电话卡，或提前买好 eSIM；热浪岛信号一般，度假村有 WiFi，出海上船前把离线地图下好。</div>
-    <div class="card"><b class="tt">安全</b>　马来西亚报警/急救电话 999；中国驻马来西亚大使馆领事保护 +60 3-2163 6815。</div>
-    <div class="card"><b class="tt">关于本页</b>　这是公开网页，所以不写订单号、证件号、房号和私人电话；订单截图请各自保存在手机里。地点名字点一下就能唤起 Google 地图导航。</div>
+<section id="tips" data-page-node-id="An6YneHLjXNFlgXLE9xw45">
+  <h2 class="sec" data-page-node-id="1E6agYdM7wuWKG1PwF8Mzz">实用贴士<small data-page-node-id="EQjFcJAZpknzbsMsQQe8AO">Travel Tips</small></h2>
+  <div class="tips" data-page-node-id="UNXm1Chxiclcjy6PN8NQuy">
+    <div class="card" data-page-node-id="dkKa6iJJiseBHni0CoHEIG"><b class="tt" data-page-node-id="zguwWXgWmvGpMMm35yXEEK">时间</b>　马来西亚全程 UTC+8，和北京没有时差。本页所有时间都是当地时间，倒计时按绝对时刻计算，在哪个时区打开都不会错。</div>
+    <div class="card" data-page-node-id="WEQoB0p5RezjBfYq2WwDgB"><b class="tt" data-page-node-id="ur79M1xh9e4PquF3avvz8v">钱</b>　马币 RM，1 RM 约 1.7 元人民币。热浪岛两天建议每人备 300–400 RM 现金（尾款、保育费、码头费、装备租金、零食）；吉隆坡槟城怡保基本可以刷卡/扫码，但夜市要现金。</div>
+    <div class="card" data-page-node-id="dZ9mOZWbkIikkdAl3na28M"><b class="tt" data-page-node-id="gtZcMbBh86ckNYS2NUBwq0">天气</b>　9 月 26–33°C，阳光毒辣，午后常有雷阵雨。浮潜备长袖水母衣和珊瑚友好防晒；船程约 1 小时，容易晕船的提前吃药。</div>
+    <div class="card" data-page-node-id="BYwsluuYYwBWMq9ahakYS8"><b class="tt" data-page-node-id="mTuYQwWEE4qazAerkBAiHb">假期</b>　9/16 是马来西亚日（全国公共假期），恰逢槟城→怡保转场：公路车多、怡保名店大排长龙，尽量避开饭点吃饭。</div>
+    <div class="card" data-page-node-id="ibmqTL5gvDg8DUcLGo85uW"><b class="tt" data-page-node-id="AtSZNXK0kw9Mz4bpclqytQ">热浪岛</b>　套餐含 3 次浮潜、三餐和下午茶；深潜需潜水执照且另收费（RM360 起）。浮潜船必须穿救生衣。9 月下旬已近季风季末，风浪多变，一切以度假村现场通知为准。</div>
+    <div class="card" data-page-node-id="obMHa8OKTphrilIHoalUOa"><b class="tt" data-page-node-id="NIpN1Z1xOIkcLvTqiW56vi">交通</b>　Grab 在四个城市都好用。吉隆坡市区坐单轨/轻轨更省；瓜登市区到墨浪码头约 1 小时车程；槟城乔治市老城适合步行。</div>
+    <div class="card" data-page-node-id="wz6ziBUQy3rOrPbHpzSwaF"><b class="tt" data-page-node-id="WqTyOji5gBrzt9uSuq6Ohu">吉隆坡机场分两座航站楼</b>　KLIA T1（川航：9/20 小黄小李 3U3996、9/24 3U3994 出发）和 KLIA T2（亚航：9/18 出发、9/21 到达），两楼相距约 10 分钟车程，走错很耽误事。出发前再看一眼行程卡。</div>
+    <div class="card" data-page-node-id="YPXpDCBlUHxJcKCmyd3lGU"><b class="tt" data-page-node-id="dvZS00caQRm6gsbBcEE5mw">行李</b>　亚航 AK6218 / AK6219 每人含 20kg 托运行李 + 7kg 手提（个人物品和手提行李合计 7kg，登机箱别超重）。上热浪岛两晚建议精简行李，大箱子可以寄存在瓜登或吉隆坡。</div>
+    <div class="card" data-page-node-id="XQRiHZJSS99jCIcu5oKkva"><b class="tt" data-page-node-id="jmSfNA6FQJ2TOjTKKInYnU">住宿</b>　马来西亚酒店普遍禁带榴莲、山竹入内。税费分三种：槟城万怡到店另付 MYR104（旅游税+文化遗产税共 RM13/房/晚×8 房晚）；怡保 AC 已含旅游税、到店另付城市税 RM6/间/晚；美利亚已含旅游税、到店交押金（现金或信用卡）；热浪岛旅游税已含在 RM1450 套餐里。</div>
+    <div class="card" data-page-node-id="5UF8kBapufTCZCjc5tgcyX"><b class="tt" data-page-node-id="JnxuDbwvrCXbFuctAejQnv">入境</b>　出发前 3 天内填写 MDAC 电子入境卡（免费，只认移民局官网）；护照有效期需 6 个月以上。</div>
+    <div class="card" data-page-node-id="Mt7h34ULEE2rF1wqfyCfUD"><b class="tt" data-page-node-id="BE2BsNcE7jCkDTyxHuzXQB">通讯</b>　机场可买 Hotlink / Celcom 电话卡，或提前买好 eSIM；热浪岛信号一般，度假村有 WiFi，出海上船前把离线地图下好。</div>
+    <div class="card" data-page-node-id="JSAGMG3Z7DIZfGVbFxziSX"><b class="tt" data-page-node-id="8j0R5Z8irX0BPCLCjDlNBy">安全</b>　马来西亚报警/急救电话 999；中国驻马来西亚大使馆领事保护 +60 3-2163 6815。</div>
+    <div class="card" data-page-node-id="LVDzpV9qi9FDPF3CBMMTmI"><b class="tt" data-page-node-id="827ag2s6Y0rU8EYVXdVYFl">关于本页</b>　这是公开网页，所以不写订单号、证件号、房号和私人电话；订单截图请各自保存在手机里。地点名字点一下就能唤起 Google 地图导航。</div>
   </div>
 </section>
 
 </div><!-- /wrap -->
 
-<footer>马来西亚疯狂季 · 2026.9.12–9.24 · 行程如有变动，以现场和最新通知为准</footer>
+<footer data-page-node-id="GdAvWtEEuj2GSniBk0zvbH">马来西亚疯狂季 · 2026.9.12–9.24 · 行程如有变动，以现场和最新通知为准</footer>
 
 <script>
 var EVENTS = [
@@ -872,6 +918,7 @@ function routeSVG(chain){
 }
 
 var wrap = document.getElementById("days-list");
+wrap.innerHTML = "";
 DAYS.forEach(function(day){
   var card = document.createElement("div");
   card.className = "card day";
@@ -880,7 +927,7 @@ DAYS.forEach(function(day){
   day.items.forEach(function(it){
     var body = '<span class="c">' + it.c;
     if (it.who) body += '<span class="who">' + it.who + "</span>";
-    if (it.book) body = '<span class="badge">' + it.book + "</span>" + body;
+    if (it.book) body = body.replace('<span class="c">', '<span class="c"><span class="badge">' + it.book + "</span>");
     if (it.n) body += "<small>" + it.n + "</small>";
     body += "</span>";
     h += '<li><span class="t">' + it.t + "</span>" + body + "</li>";
@@ -907,5 +954,7 @@ DAYS.forEach(function(day){
   wrap.appendChild(card);
 });
 </script>
-</body>
-</html>
+
+
+
+</body></html>

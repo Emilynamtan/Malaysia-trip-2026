@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手机改稿指南 · 马来西亚疯狂季</title>
+<style>
+  :root{
+    --bg:#f6f3ea; --card:#fffdf7; --ink:#1d3a2d; --muted:#6d7d72;
+    --accent:#14523c; --gold:#b08b45; --line:rgba(20,82,60,.16); --warn:#b4552a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;padding:22px 16px 60px;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto}
+  header{border-bottom:2px solid var(--accent);padding-bottom:14px;margin-bottom:22px}
+  h1{margin:0;font-size:25px;letter-spacing:1px;font-family:Georgia,"Songti SC",serif}
+  .sub{color:var(--muted);font-size:13px;letter-spacing:.5px;margin-top:6px}
+  h2{font-size:17px;margin:30px 0 10px;color:var(--accent);font-family:Georgia,"Songti SC",serif;letter-spacing:.5px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:14px 0;
+    box-shadow:0 6px 18px rgba(23,58,45,.05)}
+  ol,ul{margin:8px 0 4px;padding-left:22px}
+  li{margin:7px 0}
+  b{color:var(--accent)}
+  .step{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
+  .num{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#f4efe0;
+    display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;margin-top:2px}
+  .ok{border-left:3px solid #2f7d54;padding-left:12px}
+  .no{border-left:3px solid var(--warn);padding-left:12px}
+  code{background:rgba(20,82,60,.08);padding:2px 6px;border-radius:6px;font-size:14px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+  .tip{background:rgba(176,139,69,.12);border:1px solid rgba(176,139,69,.35);border-radius:12px;padding:12px 14px;margin:14px 0;font-size:15px}
+  .tip b{color:#8a6a2c}
+  footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;text-align:center}
+  a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:500;font-size:13px;letter-spacing:.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>手机改稿指南</h1>
+  <div class="sub">马来西亚疯狂季 · 四人小队 · 人不在电脑边时怎么改页面</div>
+</header>
+
+<div class="tip">
+  <b>一句话版：</b>手机浏览器打开 GitHub 仓库里的 <code>index.html</code> → 点铅笔 → 改文字 → 提交。约 1 分钟后自动上线。
+</div>
+
+<h2>改稿六步</h2>
+<div class="card">
+  <div class="step"><div class="num">1</div><div>手机 Safari 打开 <code>github.com</code>，用 <b>Emilynamtan</b> 账号登录。<br><span style="color:var(--muted);font-size:14px">出门前一定先在手机上登录一次并勾选记住，避免旅途中收不到验证码。</span></div></div>
+  <div class="step"><div class="num">2</div><div>打开仓库 <code>github.com/Emilynamtan/Malaysia-trip-2026</code>，点文件名 <code>index.html</code>。</div></div>
+  <div class="step"><div class="num">3</div><div>点右上角<b>铅笔图标</b>进入编辑（看不到铅笔就点旁边的「⋯」菜单里的 <b>Edit file</b>）。</div></div>
+  <div class="step"><div class="num">4</div><div>找要改的地方：点地址栏输入关键词（如 <code>吉隆坡两晚</code>），选底部「<b>在此页面上查找</b>」，页面会自动跳到那一段。</div></div>
+  <div class="step"><div class="num">5</div><div>只改中文和数字 → 滑到页面最底部，点绿色 <b>Commit changes</b> → 再点一次 <b>Commit changes</b> 确认。</div></div>
+  <div class="step"><div class="num">6</div><div>等约 <b>1 分钟</b>自动上线。打开 <code>malaysia-trip-2026-4.pages.dev</code> 下拉刷新；若还是旧内容，长按刷新按钮用「无痕/清缓存」打开一次。</div></div>
+</div>
+
+<h2>能改什么、别碰什么</h2>
+<div class="card">
+  <table>
+    <tr><th>类型</th><th>举例</th><th>手机改安全吗</th></tr>
+    <tr><td>纯文字</td><td>酒店名、时间、备注、待办事项</td><td style="color:#2f7d54"><b>安全</b></td></tr>
+    <tr><td>数字/日期</td><td>「9/21」「12:00」「RM1050」</td><td style="color:#2f7d54"><b>安全</b></td></tr>
+    <tr><td>地址、电话链接</td><td>地图导航链接里的地址串</td><td style="color:#b4552a">谨慎，只替换文字部分</td></tr>
+    <tr><td>颜色、字号、排版</td><td><code>&lt;style&gt;</code> 里的 CSS</td><td style="color:#b4552a"><b>别动</b></td></tr>
+    <tr><td>行程/倒计时数据</td><td>页面最下方 JS 里的日期数组</td><td style="color:#b4552a"><b>别动</b>，符号错一个整页就空白</td></tr>
+  </table>
+  <div class="ok" style="margin-top:14px"><b>安全操作口诀</b><br>只在中文字符之间改字，不增加也不删除任何 <code>&lt; &gt; " ' / , </code> 这类符号。</div>
+  <div class="no" style="margin-top:10px"><b>最容易翻车的三件事</b><br>① 删掉了多余的引号或尖括号；② 误删了 <code>class="..."</code> 后面的引号；③ 把两行内容粘成一行。<br>一旦页面空白，立刻按下面的方法回滚。</div>
+</div>
+
+<h2>改坏了怎么恢复</h2>
+<div class="card">
+  <ol>
+    <li>回到仓库首页，点 <b>Commits</b>（提交记录）。</li>
+    <li>找到上一次正常的版本，点进去，再点文件名 <code>index.html</code> 看旧内容。</li>
+    <li>点铅笔 → 全选删除 → 把旧内容整段粘回去 → 重新 Commit。</li>
+  </ol>
+  <div class="tip" style="margin-bottom:0"><b>更省事的办法：</b>如果你临时能借到一台电脑（同行朋友的也行），打开 WorkBuddy 跟我说一句「页面改坏了，帮我回滚到上一版」，我一条命令就恢复 —— 项目文件都在 GitHub 上。</div>
+</div>
+
+<h2>旅途中我能帮什么</h2>
+<div class="card">
+  只要能让电脑在线（远程桌面连回家里的 Mac），我就能照常帮你：
+  <ul>
+    <li>改页面、出预览图、重新上线</li>
+    <li>查当地天气、查店铺营业时间、算汇率和人均</li>
+    <li>临时改行程、加地点、生成当天的路线导航</li>
+  </ul>
+  <div class="no" style="margin-bottom:0"><b>电脑彻底关机时我就下线了</b>，上面的手机改稿法就是这种时候的备用方案。</div>
+</div>
+
+<footer>❦<br>马来西亚疯狂季 · 手机改稿指南</footer>
+
+</div>
+</body>
+</html>
